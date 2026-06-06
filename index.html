@@ -54,7 +54,7 @@
         .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
         .nav-links a:hover { color: var(--accent); }
 
-        .lang-toggle { display: flex; align-items: center; gap: 6px; margin-left: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 24px; padding: 4px 8px; }
+        .lang-toggle { display: flex; align-items: center; gap: 6px; margin-left: 0; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 24px; padding: 4px 8px; }
         .lang-btn { display: flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 16px; border: none; background: transparent; cursor: pointer; font-size: 12px; font-weight: 600; color: var(--text-muted); transition: all 0.2s; letter-spacing: 0.04em; }
         .lang-btn .flag { font-size: 16px; line-height: 1; }
         .lang-btn:hover { color: var(--text-primary); background: rgba(255,255,255,0.08); }
@@ -228,11 +228,11 @@
                 <a href="#problem" data-i18n="nav.problem">Problem</a>
                 <a href="#partners" data-i18n="nav.partners">Partners</a>
                 <a href="contact.html" data-i18n="nav.contact">Contact</a>
-                <div class="lang-toggle">
-                    <button class="lang-btn active" id="btn-en" onclick="setLang('en')"><span class="flag">🇺🇸</span><span class="label">EN</span></button>
-                    <div class="lang-divider"></div>
-                    <button class="lang-btn" id="btn-pt" onclick="setLang('pt')"><span class="flag">🇧🇷</span><span class="label">PT</span></button>
-                </div>
+            </div>
+            <div class="lang-toggle">
+                <button class="lang-btn active" id="btn-en" onclick="setLang('en')"><span class="flag">🇺🇸</span><span class="label">EN</span></button>
+                <div class="lang-divider"></div>
+                <button class="lang-btn" id="btn-pt" onclick="setLang('pt')"><span class="flag">🇧🇷</span><span class="label">PT</span></button>
             </div>
         </div>
     </nav>
