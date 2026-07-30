@@ -1,0 +1,7 @@
+# backups locais gerados por scripts de edicao — nunca publicar
+*.bak-*
+*.bak
+
+# temporarios de sistema
+Thumbs.db
+.DS_Store

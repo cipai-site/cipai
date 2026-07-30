@@ -1,0 +1,37 @@
+/* CIPAI — base stylesheet · GERADO POR cipai_tokens.py v1.1
+   NÃO EDITAR À MÃO. Requer cipai-tokens.css carregado ANTES.
+
+   ATENÇÃO: este arquivo ALTERA body, h1, h2, h3, p, table, th, td.
+   Importá-lo muda a aparência do site imediatamente. Isso é o
+   objetivo do E-05 — mas não deve ser invisível a quem importa. */
+
+/* base — registro institucional, fundo claro */
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--c-paper);
+  color: var(--c-ink);
+  font-family: var(--f-sans);
+  font-size: var(--t-body);
+  line-height: var(--t-body-lh);
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3 { font-family: var(--f-head); color: var(--c-navy); margin: 0 0 var(--s-md); }
+h1 { font-size: var(--t-h1); line-height: var(--t-h1-lh); font-weight: var(--t-h1-w); letter-spacing: var(--t-h1-tr); }
+h2 { font-size: var(--t-h2); line-height: var(--t-h2-lh); font-weight: var(--t-h2-w); letter-spacing: var(--t-h2-tr); }
+h3 { font-size: var(--t-h3); line-height: var(--t-h3-lh); font-weight: var(--t-h3-w); letter-spacing: var(--t-h3-tr); }
+h3 { color: var(--c-teal); }
+p  { max-width: var(--w-prose); margin: 0 0 var(--s-md); }
+small, .caption { font-size: var(--t-caption); color: var(--c-mute); }
+code, pre { font-family: var(--f-mono); font-size: var(--t-mono); }
+hr { border: 0; border-top: var(--r-medium) solid var(--c-navy); margin: var(--s-xl) 0; }
+
+/* superfícies e estados — espelham o template de artefato */
+.surface { background: var(--c-surface); border-left: var(--r-thick) solid var(--c-teal); padding: var(--s-md); }
+.surface--warn { border-left-color: var(--c-amber); }
+.surface--risk { border-left-color: var(--c-red); }
+.surface--ok   { border-left-color: var(--c-green); }
+table { border-collapse: collapse; width: 100%; font-size: var(--t-small); }
+th { background: var(--c-navy); color: var(--c-paper); text-align: left; padding: var(--s-sm); font-weight: 600; }
+td { border: var(--r-hairline) solid var(--c-hairline); padding: var(--s-sm); vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--c-surface-alt); }

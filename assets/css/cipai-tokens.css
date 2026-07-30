@@ -1,0 +1,144 @@
+/* CIPAI — design tokens
+   GERADO POR cipai_tokens.py v1.1 — NÃO EDITAR À MÃO.
+   Tipografia: IBM Plex (SIL Open Font License 1.1)
+   Paleta congelada, origem cipai_template.py */
+
+/* CARREGAMENTO DA FONTE — self-host.
+   Licença SIL OFL 1.1 permite hospedar e redistribuir.
+   Colocar os .woff2 em /assets/fonts/web/ — ver FONT_MANIFEST.md §2.
+   Não usar CDN de terceiro:
+   chamada externa envia o IP do visitante a terceiro e contradiz
+   o bloco de confiança e a declaração de LGPD do próprio site. */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/assets/fonts/web/plex-sans-regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/assets/fonts/web/plex-sans-semibold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/assets/fonts/web/plex-sans-bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Serif';
+  src: url('/assets/fonts/web/plex-serif-regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Serif';
+  src: url('/assets/fonts/web/plex-serif-semibold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Serif';
+  src: url('/assets/fonts/web/plex-serif-bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/assets/fonts/web/plex-mono-regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/assets/fonts/web/plex-mono-semibold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/assets/fonts/web/plex-mono-bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+/* NENHUM FALLBACK DE CDN É FORNECIDO, DELIBERADAMENTE.
+   Não há URL aqui para ser descomentada por engano.
+   Se o carregamento externo temporário vier a ser autorizado, o link entra
+   no index.html, não neste arquivo, e abre-se a pendência E-05f com prazo
+   de substituição por self-host. */
+
+:root {
+  /* cor */
+  --c-navy: #0F2A43;
+  --c-teal: #127C8A;
+  --c-steel: #3A5A78;
+  --c-amber: #B8761A;
+  --c-green: #2E6B4F;
+  --c-red: #8A2D2D;
+  --c-ink: #1A1A1A;
+  --c-mute: #5A5A5A;
+  --c-hairline: #D8DEE6;
+  --c-surface: #F2F5F8;
+  --c-surface-alt: #F6F8FA;
+  --c-code: #F4F5F7;
+  --c-paper: #FFFFFF;
+
+  /* tipografia */
+  --f-head: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --f-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --f-serif: 'IBM Plex Serif', Georgia, serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* escala */
+  --t-display: 2.75rem;
+  --t-display-lh: 1.12;
+  --t-display-w: 700;
+  --t-display-tr: -0.02em;
+  --t-h1: 2.0rem;
+  --t-h1-lh: 1.18;
+  --t-h1-w: 700;
+  --t-h1-tr: -0.015em;
+  --t-h2: 1.5rem;
+  --t-h2-lh: 1.25;
+  --t-h2-w: 600;
+  --t-h2-tr: -0.01em;
+  --t-h3: 1.2rem;
+  --t-h3-lh: 1.35;
+  --t-h3-w: 600;
+  --t-h3-tr: 0;
+  --t-body: 1.0rem;
+  --t-body-lh: 1.65;
+  --t-body-w: 400;
+  --t-body-tr: 0;
+  --t-small: 0.875rem;
+  --t-small-lh: 1.55;
+  --t-small-w: 400;
+  --t-small-tr: 0;
+  --t-caption: 0.8rem;
+  --t-caption-lh: 1.45;
+  --t-caption-w: 400;
+  --t-caption-tr: 0.01em;
+  --t-mono: 0.9rem;
+  --t-mono-lh: 1.55;
+  --t-mono-w: 400;
+  --t-mono-tr: 0;
+
+  /* espaço */
+  --s-xs: 4px;
+  --s-sm: 8px;
+  --s-md: 16px;
+  --s-lg: 24px;
+  --s-xl: 40px;
+  --s-2xl: 64px;
+  --s-3xl: 96px;
+
+  /* filete e raio */
+  --r-hairline: 0.5px;
+  --r-thin: 1.0px;
+  --r-medium: 1.6px;
+  --r-thick: 2.4px;
+  --rad-none: 0px;
+  --rad-sm: 2px;
+  --rad-md: 4px;
+  --rad-lg: 6px;
+
+  /* medida */
+  --w-prose: 68ch;
+  --w-page: 1120px;
+  --w-narrow: 44ch;
+}
+

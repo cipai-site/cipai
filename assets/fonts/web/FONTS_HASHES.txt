@@ -1,0 +1,14 @@
+CIPAI - fontes web IBM Plex - SHA-256
+Gerado em 2026-07-29 21:29
+Origem: https://github.com/IBM/plex (ramo master)
+
+7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da  OFL.txt
+ea576f38d05cc44cca48c45314984beb8cc1d2b886f58e1dce99f15dc344eb1d  plex-mono-bold.woff2
+ba204497f16b6d334cee9d1e963a831b73e3a56e1d6300a8489d18df7214b350  plex-mono-regular.woff2
+6a825b4824c01cbb401e829e5a066a1818411bcb3538b5a5792c5ca9b82343c3  plex-mono-semibold.woff2
+fa7130d854a660b39a7fc9e6e0f2dc23dba5f1346e2adea3e1fe37b6d884133d  plex-sans-bold.woff2
+ba711a3085ff9f27440b6b9c4550cfc47c97bf36591d5da958b975bb3add8c1a  plex-sans-regular.woff2
+f78048030eab62e860efa39a0df79e2e5581bf122eb95b9bc42c0b8a4988d205  plex-sans-semibold.woff2
+3b9eb99793dd9fed419aaf1af03559ea28bac17b7cb6146e7f8fc3db813621fe  plex-serif-bold.woff2
+024ebce13cec984b46e350dd85fa7c01105c777e116bfe95f097ad7fa93f39f2  plex-serif-regular.woff2
+030d808e82f99ebe5c21d50745bd06e5ce16ad9e94b360f5adcc19362beb5344  plex-serif-semibold.woff2
