@@ -1,359 +1,245 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy — CIPAI</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de privacidade — CIPAI</title>
+<meta name="description" content="O que o sítio do CIPAI coleta e o que não coleta.">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/web/plex-sans-regular.woff2">
+<link rel="stylesheet" href="/assets/css/cipai-tokens.css">
+<link rel="stylesheet" href="/assets/css/cipai-base.css">
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  body { margin:0; }
+  .wrap { max-width: var(--w-page); margin:0 auto; padding:0 var(--s-lg); }
 
-        :root {
-            --bg-primary: #0a0e1a;
-            --bg-secondary: #111827;
-            --text-primary: #f9fafb;
-            --text-secondary: #d1d5db;
-            --text-muted: #9ca3af;
-            --accent: #3b82f6;
-            --border: #374155;
-        }
+  /* navegação */
+  nav.top { border-bottom: var(--r-hairline) solid var(--c-hairline); background: var(--c-paper);
+            position: sticky; top:0; z-index:50; }
+  nav.top .wrap { display:flex; align-items:center; gap: var(--s-lg); height:68px; }
+  .brand { font-family: var(--f-head); font-weight:700; font-size:1.15rem; color: var(--c-navy);
+           letter-spacing:-0.01em; text-decoration:none; }
+  .brand span { color: var(--c-teal); font-weight:400; font-size:.78rem; margin-left:.6rem;
+                letter-spacing:0; }
+  nav.top .links { margin-left:auto; display:flex; gap: var(--s-lg); align-items:center; }
+  nav.top a.nav { color: var(--c-steel); text-decoration:none; font-size:.9rem; }
+  nav.top a.nav:hover { color: var(--c-navy); }
+  .lang { display:flex; border: var(--r-hairline) solid var(--c-hairline); border-radius: var(--rad-sm);
+          overflow:hidden; }
+  .lang button { border:0; background:transparent; padding:.34rem .62rem; font: inherit;
+                 font-size:.78rem; color: var(--c-mute); cursor:pointer; }
+  .lang button[aria-pressed="true"] { background: var(--c-navy); color: var(--c-paper); }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
+  /* seções */
+  section { padding: var(--s-2xl) 0; border-bottom: var(--r-hairline) solid var(--c-hairline); }
+  section:last-of-type { border-bottom:0; }
+  .kicker { font-size:.74rem; letter-spacing:.09em; text-transform:uppercase;
+            color: var(--c-teal); font-weight:600; margin-bottom: var(--s-sm); }
 
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: rgba(10, 14, 26, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            padding: 1.5rem 2rem;
-            z-index: 1000;
-        }
+  /* herói */
+  .hero { padding: var(--s-3xl) 0 var(--s-2xl); }
+  .hero h1 { font-size: clamp(1.9rem, 4.4vw, var(--t-display));
+             line-height: var(--t-display-lh); letter-spacing: var(--t-display-tr);
+             max-width: 20ch; margin-bottom: var(--s-lg); }
+  .hero .lead { font-size:1.12rem; color: var(--c-steel); max-width: 58ch;
+                line-height:1.55; }
 
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  /* números */
+  .figs { display:grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-md);
+          margin: var(--s-lg) 0; }
+  .fig { background: var(--c-surface); border-left: var(--r-thick) solid var(--c-teal);
+         padding: var(--s-md); }
+  .fig b { display:block; font-family: var(--f-head); font-size:1.85rem; color: var(--c-navy);
+           line-height:1.1; }
+  .fig small { color: var(--c-mute); display:block; margin-top:.3rem; }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-        }
+  /* grades */
+  .grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-lg); }
+  .grid2 { display:grid; grid-template-columns: 1.1fr .9fr; gap: var(--s-xl); align-items:start; }
+  .card h3 { margin-bottom:.4rem; }
+  .card p { color: var(--c-mute); font-size:.94rem; margin:0; max-width:none; }
 
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
+  /* marcos */
+  table.miles { font-size:.9rem; }
+  table.miles td:first-child { white-space:nowrap; color: var(--c-teal); font-weight:600;
+                               width:1%; }
 
-        .nav-back {
-            font-size: 14px;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+  /* fundador */
+  .quote { font-size:1.06rem; color: var(--c-steel); border-left: var(--r-thick) solid var(--c-navy);
+           padding-left: var(--s-md); max-width:62ch; }
+  .sig { margin-top: var(--s-md); }
+  .sig b { color: var(--c-navy); }
+  .sig span { color: var(--c-mute); font-size:.9rem; }
 
-        .nav-back:hover { color: var(--accent); }
+  /* chamada */
+  .cta { display:inline-block; background: var(--c-navy); color: var(--c-paper);
+         text-decoration:none; padding:.8rem 1.5rem; border-radius: var(--rad-sm);
+         font-weight:600; font-size:.98rem; }
+  .cta:hover { background: var(--c-teal); }
+  .plain { list-style:none; padding:0; margin: var(--s-md) 0; }
+  .plain li { padding:.3rem 0 .3rem 1.2rem; position:relative; color: var(--c-ink); }
+  .plain li::before { content:"—"; position:absolute; left:0; color: var(--c-teal); }
 
-        .lang-toggle {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 4px 8px;
-        }
+  footer { padding: var(--s-xl) 0; color: var(--c-mute); font-size:.84rem; }
+  footer a { color: var(--c-steel); }
+  footer .stage { color: var(--c-amber); font-weight:600; }
 
-        .lang-btn {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 4px 10px;
-            border-radius: 16px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-muted);
-            transition: all 0.2s;
-        }
-
-        .lang-btn .flag { font-size: 16px; line-height: 1; }
-        .lang-btn:hover { color: var(--text-primary); background: rgba(255,255,255,0.08); }
-        .lang-btn.active { background: var(--accent); color: #fff; }
-        .lang-divider { width: 1px; height: 14px; background: var(--border); }
-
-        .hero {
-            padding: 140px 2rem 40px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .last-updated {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        section {
-            padding: 40px 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin: 2.5rem 0 1rem;
-            color: var(--accent);
-        }
-
-        p {
-            font-size: 16px;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .notice-box {
-            background: rgba(59, 130, 246, 0.08);
-            border: 1px solid rgba(59, 130, 246, 0.25);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .notice-box strong { color: var(--accent); }
-
-        .email-link {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .email-link:hover { text-decoration: underline; }
-
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 2.5rem 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-top: 2rem;
-        }
-
-        .delaware-note {
-            color: #6b7280;
-            font-size: 12px;
-            margin-top: 0.6rem;
-            letter-spacing: 0.03em;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 36px; }
-            h2 { font-size: 24px; }
-            .hero { padding: 120px 1.5rem 30px; }
-            section { padding: 30px 1.5rem; }
-        }
-    </style>
+  @media (max-width: 760px) {
+    .grid3, .grid2, .figs { grid-template-columns: 1fr; }
+    nav.top .links a.nav { display:none; }
+  }
+</style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">CIPAI</a>
-            <div class="nav-right">
-                <a href="index.html" class="nav-back" data-i18n="nav.back">← Back</a>
-            </div>
-            <div class="lang-toggle">
-                <button class="lang-btn active" id="btn-en" onclick="setLang('en')">
-                    <span class="flag">🇺🇸</span>
-                    <span>EN</span>
-                </button>
-                <div class="lang-divider"></div>
-                <button class="lang-btn" id="btn-pt" onclick="setLang('pt')">
-                    <span class="flag">🇧🇷</span>
-                    <span>PT</span>
-                </button>
-            </div>
-        </div>
-    </nav>
 
-    <div class="hero">
-        <h1 data-i18n="pp.title">Privacy Policy</h1>
-        <p class="last-updated" data-i18n="pp.updated">Last Updated: May 2026</p>
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="/">CIPAI<span data-i18n="brand.tag">Decisão governada em saúde</span></a>
+    <div class="links">
+      <a class="nav" href="/#plataforma" data-i18n="nav.platform">Plataforma</a>
+      <a class="nav" href="/#descoberta" data-i18n="nav.finding">Descoberta</a>
+      <a class="nav" href="/#estado" data-i18n="nav.status">Estado</a>
+      <a class="nav" href="/#fundador" data-i18n="nav.founder">Fundador</a>
+      <div class="lang">
+        <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
+  </div>
+</nav>
 
-    <section>
-        <div class="notice-box">
-            <p data-i18n="pp.notice"><strong>Important Notice:</strong> CIPAI is currently an early operational prototype under active development. This privacy policy describes our intended data handling practices.</p>
-        </div>
+<main>
 
-        <h2 data-i18n="pp.s1.title">1. Overview</h2>
-        <p data-i18n="pp.s1.text">
-            CIPAI is committed to protecting your privacy and handling data with transparency. This policy outlines how we collect, use, and protect information.
-        </p>
+  <section class="hero">
+    <div class="wrap">
+      <div class="kicker" data-i18n="p.kicker">Política de privacidade</div>
+      <h1 style="max-width:26ch" data-i18n="p.h">O que este sítio coleta, e o que não coleta.</h1>
+      <p class="lead" data-i18n="p.upd">Atualizada em julho de 2026.</p>
+    </div>
+  </section>
 
-        <h2 data-i18n="pp.s2.title">2. Information Collection</h2>
-        <p data-i18n="pp.s2.intro">During prototype evaluation, we may collect:</p>
-        <p data-i18n="pp.s2.items">
-            • Contact Information (if voluntarily provided)<br>
-            • Usage Data (anonymized analytics)<br>
-            • Feedback and evaluation notes
-        </p>
+  <section>
+    <div class="wrap">
+      <h3 data-i18n="p.t1">Este sítio</h3>
+      <p data-i18n="p.p1">O CIPAI não coleta dado pessoal por meio deste sítio. Não há formulário, não há cadastro, não há rastreamento publicitário e não há perfilamento de visitante.</p>
+      <p data-i18n="p.p2">Registros técnicos padrão — endereço de origem, horário e recurso solicitado — podem ser processados pelo provedor de hospedagem, como ocorre em qualquer sítio. O CIPAI não os utiliza para identificar visitantes.</p>
+      <p data-i18n="p.p3">As fontes tipográficas são servidas a partir deste próprio domínio. Nenhuma requisição a serviço de terceiro é feita ao carregar esta página.</p>
 
-        <h2 data-i18n="pp.s3.title">3. Data Use</h2>
-        <p data-i18n="pp.s3.intro">Information is used exclusively for:</p>
-        <p data-i18n="pp.s3.items">
-            • Providing decision governance services<br>
-            • Improving system accuracy and governance logic<br>
-            • Communicating about updates<br>
-            • Ensuring security and auditability
-        </p>
+      <h3 style="margin-top:var(--s-xl)" data-i18n="p.t2">Se você escrever</h3>
+      <p data-i18n="p.p4">A informação que você enviar por e-mail é usada apenas para responder ao seu contato. Não é vendida, não é compartilhada e não é usada para comunicação de marketing.</p>
 
-        <p data-i18n="pp.s3.donot.label"><strong>We do NOT:</strong></p>
-        <p data-i18n="pp.s3.donot.items">
-            • Sell your data to third parties<br>
-            • Use your data for marketing without consent<br>
-            • Share your information without permission
-        </p>
+      <h3 style="margin-top:var(--s-xl)" data-i18n="p.t3">O que não deve ser enviado</h3>
+      <p data-i18n="p.p5">Não envie informação de paciente, dado sensível de saúde, arquivo operacional ou informação institucional confidencial por meio deste sítio ou por e-mail não solicitado.</p>
+      <p data-i18n="p.p6">Qualquer análise de dado real ocorre exclusivamente sob acordo prévio, com termos de tratamento definidos, minimização e pseudonimização sempre que possível.</p>
 
-        <h2 data-i18n="pp.s4.title">4. Data Security</h2>
-        <p data-i18n="pp.s4.text">
-            We implement industry-standard security measures including encryption, access control, and immutable audit logs.
-        </p>
+      <h3 style="margin-top:var(--s-xl)" data-i18n="p.t4">Seus direitos</h3>
+      <p data-i18n="p.p7">Você pode solicitar acesso, correção ou eliminação de qualquer informação que tenha nos enviado. Escreva para founder@cipai.ai e responderemos.</p>
 
-        <h2 data-i18n="pp.s5.title">5. Your Rights</h2>
-        <p data-i18n="pp.s5.intro">You have the right to:</p>
-        <p data-i18n="pp.s5.items">
-            • Access your data<br>
-            • Request deletion<br>
-            • Opt-out of data collection<br>
-            • Correct inaccurate information
-        </p>
+      <h3 style="margin-top:var(--s-xl)" data-i18n="p.t5">Estágio do projeto</h3>
+      <p data-i18n="p.p8">O CIPAI é um protótipo operacional inicial, em fase de validação controlada. Esta política descreve o sítio público — não descreve o tratamento de dado em validação, que é definido caso a caso, por acordo escrito, antes de qualquer envio.</p>
+    </div>
+  </section>
 
-        <h2 data-i18n="pp.s6.title">6. Contact</h2>
-        <p>
-            <span data-i18n="pp.s6.text">Questions about privacy?</span><br>
-            <span data-i18n="pp.s6.email.label">Email:</span> <a class="email-link" id="privacy-email" href="#">—</a>
-        </p>
+</main>
 
-        <div class="notice-box" style="margin-top: 3rem;">
-            <p data-i18n="pp.status"><strong>Current Status:</strong> This policy reflects our intended practices. During the prototype phase, we collect minimal data for evaluation purposes only.</p>
-        </div>
-    </section>
+<footer>
+  <div class="wrap">
+    <p class="stage" data-i18n="foot.stage">Protótipo operacional inicial — fase de validação controlada</p>
+    <p data-i18n="foot.ip">Pedido provisório de patente depositado nos Estados Unidos · cedido à CIPAI, Inc.</p>
+    <p>CIPAI, Inc. · Delaware C-Corp ·
+       <a href="/contact.html" data-i18n="foot.contact">Contato</a> ·
+       <a href="/privacy.html" data-i18n="foot.privacy">Política de privacidade</a></p>
+  </div>
+</footer>
 
-    <footer>
-        <p data-i18n="footer.copy">© 2026 CIPAI. Decision Governance Infrastructure.</p>
-        <p class="patent-note" data-i18n="footer.patent">CIPAI Inc. &nbsp;·&nbsp; Delaware C-Corp &nbsp;·&nbsp; US Provisional Patent Application #64/063,591</p>
-    </footer>
+<script>
+const I18N = {
+  en: {
+    "p.kicker":"Privacy Policy","p.h":"What this website collects, and what it does not.",
+    "p.upd":"Updated July 2026.",
+    "p.t1":"This website",
+    "p.p1":"CIPAI does not collect personal data through this website. There is no form, no registration, no advertising tracker and no visitor profiling.",
+    "p.p2":"Standard technical logs — origin address, time and requested resource — may be processed by the hosting provider, as on any website. CIPAI does not use them to identify visitors.",
+    "p.p3":"Typefaces are served from this domain. No third-party request is made when loading this page.",
+    "p.t2":"If you write to us",
+    "p.p4":"Information you send by email is used only to answer you. It is not sold, not shared and not used for marketing.",
+    "p.t3":"What should not be sent",
+    "p.p5":"Do not send patient information, sensitive health data, operational files or confidential institutional information through this website or by unsolicited email.",
+    "p.p6":"Any analysis of real data happens exclusively under prior agreement, with defined handling terms, minimisation and pseudonymisation wherever possible.",
+    "p.t4":"Your rights",
+    "p.p7":"You may request access to, correction of, or deletion of any information you have sent us. Write to founder@cipai.ai and we will respond.",
+    "p.t5":"Project stage",
+    "p.p8":"CIPAI is an early operational prototype in a controlled validation phase. This policy describes the public website — it does not describe data handling during validation, which is defined case by case, in writing, before anything is sent.",
 
-    <script>
-        // ─── Email construction (bypasses Cloudflare obfuscation) ────────────
-        (function() {
-            const u = 'founder';
-            const d = 'cipai.ai';
-            const el = document.getElementById('privacy-email');
-            el.href = 'mailto:' + u + '@' + d;
-            el.textContent = u + '@' + d;
-        })();
+    "brand.tag":"Governed healthcare decisions",
+    "nav.platform":"Platform","nav.finding":"Finding","nav.status":"Status","nav.founder":"Founder",
+    "hero.title":"CIPAI preserves evidence, uncertainty and human authority in consequential healthcare decisions.",
+    "hero.lead":"First proof: payer-return analysis in healthcare revenue integrity, where context loss is measurable in real operational files.",
+    "platform.kicker":"The platform",
+    "platform.p1":"CIPAI operates above the systems a healthcare institution already uses. It does not replace the ERP, the billing system or the medical record — it organises what they already produce into traceable decision paths, in which evidence, uncertainty and human confirmation remain visible over time.",
+    "platform.p2":"It was built as domain-agnostic infrastructure. The first application is payer-return analysis in the healthcare revenue cycle.",
+    "platform.inv":"Four principles are frozen in the architecture and are not configurable:",
+    "platform.i1":"Human authority","platform.i2":"Independent audit",
+    "platform.i3":"Traceability","platform.i4":"Isolation between organisations",
+    "finding.kicker":"What we found","finding.h":"Five per cent carried a signal.",
+    "finding.p1":"When a payer returns a statement, the billing team reacts to what is marked. What is marked is what the payer chose to mark.",
+    "finding.f1":"detail items, in one real return verified against the complete canonical file",
+    "finding.f2":"carried an explicit denial record","finding.f3":"of the total analysed",
+    "finding.p2":"The point is not to claim loss in the other 17,498. It is that an operation reading only the explicit denial signal cannot conclude what happened to them.",
+    "finding.p3":"<strong>What remains invisible when revenue integrity reacts only to what the payer explicitly labelled?</strong>",
+    "bounds.kicker":"Boundaries",
+    "bounds.t1":"No silent automation","bounds.p1":"Nothing runs without being visible.",
+    "bounds.t2":"No external action without human review","bounds.p2":"The system prepares and organises; the person authorises.",
+    "bounds.t3":"No integration required","bounds.p3":"Controlled validation runs on a file the institution already exports, with no change to any system.",
+    "built.kicker":"What we built",
+    "built.p1":"The architecture was frozen into twenty-two verifiable baselines <strong>before</strong> any implementation — not afterwards, as retroactive documentation.",
+    "built.p2":"That discipline is what allows us to state, for any analysis delivered, where every number came from: what was measured, what was inferred, and what remains dependent on information that is absent.",
+    "built.p3":"Execution core in validation. Experience layer defined. Interface development under way.",
+    "status.kicker":"Where we are",
+    "status.d1":"12 May 2026","status.m1":"First US provisional patent application filed",
+    "status.d2":"May 2026","status.m2":"Delaware incorporation completed",
+    "status.d3":"21 June 2026","status.m3":"Assignment to CIPAI, Inc. recorded",
+    "status.d4":"June–July 2026","status.m4":"Two real healthcare datasets analysed against canonical files",
+    "status.d5":"1 July 2026","status.m5":"Architecture frozen into auditable baselines",
+    "status.d6":"July 2026","status.m6":"Second provisional application drafted, pending filing",
+    "status.d7":"Ongoing","status.m7":"Microsoft ISV Success · AWS Activate",
+    "status.note":"There is no paying customer, no revenue and no product in operation by a third party.",
+    "founder.kicker":"Founder",
+    "founder.q":"\u201CTechnical excellence, hard work and intelligence do not guarantee good outcomes when the information is incomplete, distorted, or disconnected from the reality in which the decision has to work. CIPAI exists because that problem is structural.\u201D",
+    "founder.role":"Founder & CEO · Orthopedic surgeon",
+    "founder.bio":"Trained in Brazil, with advanced clinical and surgical training in Houston and Lyon. Prior executive leadership and companies of his own before CIPAI. The architecture was specified, frozen and verified by the founder; implementation is contracted and audited against the frozen baselines.",
+    "cta.kicker":"Controlled validation","cta.h":"Evidence before procurement.",
+    "cta.p1":"Send a payer-return file your team already exports as routine. CIPAI returns a governed analysis: what appears, what remains uncertain, and what deserves investigation.",
+    "cta.p2":"No integration. No automation. No licence commitment.",
+    "cta.btn":"Request founder conversation",
+    "foot.stage":"Early operational prototype — controlled validation phase",
+    "foot.ip":"US provisional patent application filed · assigned to CIPAI, Inc.",
+    "foot.contact":"Contact","foot.privacy":"Privacy Policy"
+  }
+};
+const PT = {};
+document.querySelectorAll('[data-i18n]').forEach(el => { PT[el.dataset.i18n] = el.innerHTML; });
 
-        // ─── i18n dictionary ─────────────────────────────────────────────────
-        const i18n = {
-            en: {
-                'nav.back':           '← Back',
-                'pp.title':           'Privacy Policy',
-                'pp.updated':         'Last Updated: May 2026',
-                'pp.notice':          '<strong>Important Notice:</strong> CIPAI is currently an early operational prototype under active development. This privacy policy describes our intended data handling practices.',
-                'pp.s1.title':        '1. Overview',
-                'pp.s1.text':         'CIPAI is committed to protecting your privacy and handling data with transparency. This policy outlines how we collect, use, and protect information.',
-                'pp.s2.title':        '2. Information Collection',
-                'pp.s2.intro':        'During prototype evaluation, we may collect:',
-                'pp.s2.items':        '• Contact Information (if voluntarily provided)<br>• Usage Data (anonymized analytics)<br>• Feedback and evaluation notes',
-                'pp.s3.title':        '3. Data Use',
-                'pp.s3.intro':        'Information is used exclusively for:',
-                'pp.s3.items':        '• Providing decision governance services<br>• Improving system accuracy and governance logic<br>• Communicating about updates<br>• Ensuring security and auditability',
-                'pp.s3.donot.label':  '<strong>We do NOT:</strong>',
-                'pp.s3.donot.items':  '• Sell your data to third parties<br>• Use your data for marketing without consent<br>• Share your information without permission',
-                'pp.s4.title':        '4. Data Security',
-                'pp.s4.text':         'We implement industry-standard security measures including encryption, access control, and immutable audit logs.',
-                'pp.s5.title':        '5. Your Rights',
-                'pp.s5.intro':        'You have the right to:',
-                'pp.s5.items':        '• Access your data<br>• Request deletion<br>• Opt-out of data collection<br>• Correct inaccurate information',
-                'pp.s6.title':        '6. Contact',
-                'pp.s6.text':         'Questions about privacy?',
-                'pp.s6.email.label':  'Email:',
-                'pp.status':          '<strong>Current Status:</strong> This policy reflects our intended practices. During the prototype phase, we collect minimal data for evaluation purposes only.',
-                'footer.copy':'© 2026 CIPAI Inc. All rights reserved.',
-                'footer.patent':    'CIPAI Inc. · Delaware C-Corp · US Provisional Patent Application #64/063,591'
-            },
-            pt: {
-                'nav.back':           '← Voltar',
-                'pp.title':           'Política de Privacidade',
-                'pp.updated':         'Última Atualização: Maio de 2026',
-                'pp.notice':          '<strong>Aviso Importante:</strong> CIPAI é atualmente um protótipo operacional inicial em desenvolvimento ativo. Esta política de privacidade descreve nossas práticas pretendidas de tratamento de dados.',
-                'pp.s1.title':        '1. Visão Geral',
-                'pp.s1.text':         'CIPAI está comprometida com a proteção da sua privacidade e o tratamento de dados com transparência. Esta política descreve como coletamos, usamos e protegemos informações.',
-                'pp.s2.title':        '2. Coleta de Informações',
-                'pp.s2.intro':        'Durante a avaliação do protótipo, podemos coletar:',
-                'pp.s2.items':        '• Informações de Contato (se fornecidas voluntariamente)<br>• Dados de Uso (análises anonimizadas)<br>• Feedback e notas de avaliação',
-                'pp.s3.title':        '3. Uso de Dados',
-                'pp.s3.intro':        'As informações são usadas exclusivamente para:',
-                'pp.s3.items':        '• Fornecer serviços de governança decisional<br>• Melhorar a precisão do sistema e a lógica de governança<br>• Comunicar atualizações<br>• Garantir segurança e auditabilidade',
-                'pp.s3.donot.label':  '<strong>NÃO fazemos:</strong>',
-                'pp.s3.donot.items':  '• Vender seus dados a terceiros<br>• Usar seus dados para marketing sem consentimento<br>• Compartilhar suas informações sem permissão',
-                'pp.s4.title':        '4. Segurança de Dados',
-                'pp.s4.text':         'Implementamos medidas de segurança padrão da indústria, incluindo criptografia, controle de acesso e logs de auditoria imutáveis.',
-                'pp.s5.title':        '5. Seus Direitos',
-                'pp.s5.intro':        'Você tem o direito de:',
-                'pp.s5.items':        '• Acessar seus dados<br>• Solicitar exclusão<br>• Optar por não participar da coleta de dados<br>• Corrigir informações imprecisas',
-                'pp.s6.title':        '6. Contato',
-                'pp.s6.text':         'Dúvidas sobre privacidade?',
-                'pp.s6.email.label':  'E-mail:',
-                'pp.status':          '<strong>Status Atual:</strong> Esta política reflete nossas práticas pretendidas. Durante a fase de protótipo, coletamos dados mínimos apenas para fins de avaliação.',
-                'footer.copy':'© 2026 CIPAI Inc. All rights reserved.',
-                'footer.patent':    'CIPAI Inc. · Delaware C-Corp · Patente Provisional EUA #64/063,591'
-            }
-        };
+function setLang(lang) {
+  const dict = lang === 'en' ? I18N.en : PT;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = dict[el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
+  document.querySelectorAll('.lang button').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  try { localStorage.setItem('cipai.lang', lang); } catch (e) {}
+}
+document.querySelectorAll('.lang button').forEach(b =>
+  b.addEventListener('click', () => setLang(b.dataset.lang)));
+try {
+  const saved = localStorage.getItem('cipai.lang');
+  if (saved === 'en') setLang('en');
+  else if (!saved && (navigator.language || '').slice(0,2) !== 'pt') setLang('en');
+} catch (e) {}
+</script>
 
-        function applyLang(lang) {
-            const dict = i18n[lang];
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (dict[key] !== undefined) el.innerHTML = dict[key];
-            });
-            document.documentElement.setAttribute('lang', lang === 'pt' ? 'pt-BR' : 'en');
-            document.title = lang === 'pt' ? 'Política de Privacidade — CIPAI' : 'Privacy Policy — CIPAI';
-        }
-
-        function setLang(lang) {
-            applyLang(lang);
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
-            localStorage.setItem('cip-lang', lang);
-        }
-
-        (function() {
-            const saved = localStorage.getItem('cip-lang');
-            if (saved && saved !== 'en') setLang(saved);
-        })();
-    </script>
 </body>
 </html>

@@ -1,113 +1,236 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact — CIPAI</title>
-    <meta name="description" content="Contact CIPAI Inc. for partnership, investment, or enterprise inquiries.">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg-primary: #0a0e1a; --bg-secondary: #111827; --text-primary: #f9fafb; --text-secondary: #d1d5db; --text-muted: #9ca3af; --accent: #3b82f6; --border: #374155; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
-        nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,14,26,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; z-index: 1000; }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 24px; font-weight: 700; background: linear-gradient(135deg,#3b82f6,#8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
-        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
-        .nav-back { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-        .nav-back:hover { color: var(--accent); }
-        .lang-toggle { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 24px; padding: 4px 8px; }
-        .lang-btn { display: flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 16px; border: none; background: transparent; cursor: pointer; font-size: 12px; font-weight: 600; color: var(--text-muted); transition: all 0.2s; }
-        .lang-btn .flag { font-size: 16px; line-height: 1; }
-        .lang-btn:hover { color: var(--text-primary); background: rgba(255,255,255,0.08); }
-        .lang-btn.active { background: var(--accent); color: #fff; }
-        .lang-divider { width: 1px; height: 14px; background: var(--border); }
-        .hero { padding: 140px 2rem 60px; max-width: 700px; margin: 0 auto; text-align: center; }
-        h1 { font-size: 48px; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -0.03em; }
-        .subtitle { font-size: 18px; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.7; }
-        .contact-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 3rem 2rem; max-width: 600px; margin: 0 auto; }
-        .contact-info { font-size: 16px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; }
-        .email-link { font-size: 22px; color: var(--accent); text-decoration: none; font-weight: 600; display: inline-block; margin: 1.2rem 0; word-break: break-all; }
-        .email-link:hover { text-decoration: underline; }
-        .response-note { margin-top: 2rem; font-size: 14px; color: var(--text-muted); }
-        .topics { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
-        .topics-label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
-        .topic-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-        .topic-pill { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 20px; padding: 0.4rem 1rem; font-size: 13px; color: var(--text-secondary); }
-        footer { border-top: 1px solid var(--border); padding: 3rem 2rem; text-align: center; margin-top: 5rem; }
-        .copyright { color: var(--text-muted); font-size: 14px; }
-        .patent-note { color: #6b7280; font-size: 12px; margin-top: 0.6rem; letter-spacing: 0.03em; }
-        @media (max-width: 768px) { h1 { font-size: 36px; } .hero { padding: 120px 1.5rem 40px; } .email-link { font-size: 18px; } }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contato — CIPAI</title>
+<meta name="description" content="Conversa direta com o fundador da CIPAI, Inc.">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/web/plex-sans-regular.woff2">
+<link rel="stylesheet" href="/assets/css/cipai-tokens.css">
+<link rel="stylesheet" href="/assets/css/cipai-base.css">
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  body { margin:0; }
+  .wrap { max-width: var(--w-page); margin:0 auto; padding:0 var(--s-lg); }
+
+  /* navegação */
+  nav.top { border-bottom: var(--r-hairline) solid var(--c-hairline); background: var(--c-paper);
+            position: sticky; top:0; z-index:50; }
+  nav.top .wrap { display:flex; align-items:center; gap: var(--s-lg); height:68px; }
+  .brand { font-family: var(--f-head); font-weight:700; font-size:1.15rem; color: var(--c-navy);
+           letter-spacing:-0.01em; text-decoration:none; }
+  .brand span { color: var(--c-teal); font-weight:400; font-size:.78rem; margin-left:.6rem;
+                letter-spacing:0; }
+  nav.top .links { margin-left:auto; display:flex; gap: var(--s-lg); align-items:center; }
+  nav.top a.nav { color: var(--c-steel); text-decoration:none; font-size:.9rem; }
+  nav.top a.nav:hover { color: var(--c-navy); }
+  .lang { display:flex; border: var(--r-hairline) solid var(--c-hairline); border-radius: var(--rad-sm);
+          overflow:hidden; }
+  .lang button { border:0; background:transparent; padding:.34rem .62rem; font: inherit;
+                 font-size:.78rem; color: var(--c-mute); cursor:pointer; }
+  .lang button[aria-pressed="true"] { background: var(--c-navy); color: var(--c-paper); }
+
+  /* seções */
+  section { padding: var(--s-2xl) 0; border-bottom: var(--r-hairline) solid var(--c-hairline); }
+  section:last-of-type { border-bottom:0; }
+  .kicker { font-size:.74rem; letter-spacing:.09em; text-transform:uppercase;
+            color: var(--c-teal); font-weight:600; margin-bottom: var(--s-sm); }
+
+  /* herói */
+  .hero { padding: var(--s-3xl) 0 var(--s-2xl); }
+  .hero h1 { font-size: clamp(1.9rem, 4.4vw, var(--t-display));
+             line-height: var(--t-display-lh); letter-spacing: var(--t-display-tr);
+             max-width: 20ch; margin-bottom: var(--s-lg); }
+  .hero .lead { font-size:1.12rem; color: var(--c-steel); max-width: 58ch;
+                line-height:1.55; }
+
+  /* números */
+  .figs { display:grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-md);
+          margin: var(--s-lg) 0; }
+  .fig { background: var(--c-surface); border-left: var(--r-thick) solid var(--c-teal);
+         padding: var(--s-md); }
+  .fig b { display:block; font-family: var(--f-head); font-size:1.85rem; color: var(--c-navy);
+           line-height:1.1; }
+  .fig small { color: var(--c-mute); display:block; margin-top:.3rem; }
+
+  /* grades */
+  .grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-lg); }
+  .grid2 { display:grid; grid-template-columns: 1.1fr .9fr; gap: var(--s-xl); align-items:start; }
+  .card h3 { margin-bottom:.4rem; }
+  .card p { color: var(--c-mute); font-size:.94rem; margin:0; max-width:none; }
+
+  /* marcos */
+  table.miles { font-size:.9rem; }
+  table.miles td:first-child { white-space:nowrap; color: var(--c-teal); font-weight:600;
+                               width:1%; }
+
+  /* fundador */
+  .quote { font-size:1.06rem; color: var(--c-steel); border-left: var(--r-thick) solid var(--c-navy);
+           padding-left: var(--s-md); max-width:62ch; }
+  .sig { margin-top: var(--s-md); }
+  .sig b { color: var(--c-navy); }
+  .sig span { color: var(--c-mute); font-size:.9rem; }
+
+  /* chamada */
+  .cta { display:inline-block; background: var(--c-navy); color: var(--c-paper);
+         text-decoration:none; padding:.8rem 1.5rem; border-radius: var(--rad-sm);
+         font-weight:600; font-size:.98rem; }
+  .cta:hover { background: var(--c-teal); }
+  .plain { list-style:none; padding:0; margin: var(--s-md) 0; }
+  .plain li { padding:.3rem 0 .3rem 1.2rem; position:relative; color: var(--c-ink); }
+  .plain li::before { content:"—"; position:absolute; left:0; color: var(--c-teal); }
+
+  footer { padding: var(--s-xl) 0; color: var(--c-mute); font-size:.84rem; }
+  footer a { color: var(--c-steel); }
+  footer .stage { color: var(--c-amber); font-weight:600; }
+
+  @media (max-width: 760px) {
+    .grid3, .grid2, .figs { grid-template-columns: 1fr; }
+    nav.top .links a.nav { display:none; }
+  }
+</style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">CIPAI</a>
-            <div class="nav-right">
-                <a href="index.html" class="nav-back" data-i18n="nav.back">← Back</a>
-            </div>
-            <div class="lang-toggle">
-                <button class="lang-btn active" id="btn-en" onclick="setLang('en')"><span class="flag">🇺🇸</span><span>EN</span></button>
-                <div class="lang-divider"></div>
-                <button class="lang-btn" id="btn-pt" onclick="setLang('pt')"><span class="flag">🇧🇷</span><span>PT</span></button>
-            </div>
-        </div>
-    </nav>
 
-    <div class="hero">
-        <h1 data-i18n="contact.title">Contact</h1>
-        <p class="subtitle" data-i18n="contact.subtitle">Interested in learning more about CIPAI? Get in touch.</p>
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="/">CIPAI<span data-i18n="brand.tag">Decisão governada em saúde</span></a>
+    <div class="links">
+      <a class="nav" href="/#plataforma" data-i18n="nav.platform">Plataforma</a>
+      <a class="nav" href="/#descoberta" data-i18n="nav.finding">Descoberta</a>
+      <a class="nav" href="/#estado" data-i18n="nav.status">Estado</a>
+      <a class="nav" href="/#fundador" data-i18n="nav.founder">Fundador</a>
+      <div class="lang">
+        <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
+  </div>
+</nav>
 
-    <section style="padding: 0 2rem 0;">
-        <div class="contact-card">
-            <p class="contact-info" data-i18n="contact.info">For information about CIPAI, investment opportunities, healthcare beta access, or enterprise partnerships, reach out directly:</p>
-            <a class="email-link" id="contact-email" href="#">—</a>
-            <p class="response-note" data-i18n="contact.response">We respond within 48 business hours.</p>
-            <div class="topics">
-                <p class="topics-label" data-i18n="contact.topics.label">Topics</p>
-                <div class="topic-pills">
-                    <span class="topic-pill" data-i18n="contact.t1">Healthcare Beta Access</span>
-                    <span class="topic-pill" data-i18n="contact.t2">Enterprise Partnerships</span>
-                    <span class="topic-pill" data-i18n="contact.t3">Investment Inquiries</span>
-                    <span class="topic-pill" data-i18n="contact.t4">Infrastructure Programs</span>
-                </div>
-            </div>
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="kicker" data-i18n="c.kicker">Contato</div>
+      <h1 style="max-width:24ch" data-i18n="c.h">Conversa com o fundador.</h1>
+      <p class="lead" data-i18n="c.lead">Para validação controlada, conversa institucional ou qualquer pergunta sobre o projeto, o caminho é direto — não há formulário nem intermediário.</p>
+      <p style="margin-top:var(--s-lg)"><a class="cta" href="mailto:founder@cipai.ai?subject=CIPAI%20—%20conversa" data-i18n="c.btn">founder@cipai.ai</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="grid2">
+        <div>
+          <h3 data-i18n="c.t1">O que enviar</h3>
+          <p data-i18n="c.p1">Quem você é, a instituição, e o que gostaria de entender. Se a conversa for sobre validação controlada, basta dizer — o caminho está descrito na página inicial.</p>
         </div>
-    </section>
+        <div>
+          <h3 data-i18n="c.t2">O que não enviar</h3>
+          <p data-i18n="c.p2">Não envie dado de paciente, arquivo operacional ou informação institucional confidencial por e-mail não solicitado. Qualquer tratamento de dado ocorre apenas sob acordo prévio, com termos definidos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p class="copyright" data-i18n="footer.copy">© 2026 CIPAI Inc. All rights reserved.</p>
-        <p class="patent-note" data-i18n="footer.patent">CIPAI Inc. · Delaware C-Corp · US Provisional Patent Application #64/063,591</p>
-    </footer>
+  <section>
+    <div class="wrap">
+      <p style="color:var(--c-mute);font-size:.92rem" data-i18n="c.corp">CIPAI, Inc. — Delaware C-Corp · Newark, Delaware, Estados Unidos</p>
+    </div>
+  </section>
 
-    <script>
-        (function() { const u='founder',d='cipai.ai',el=document.getElementById('contact-email'); el.href='mailto:'+u+'@'+d; el.textContent=u+'@'+d; })();
-        const i18n = {
-            en: {
-                'nav.back':'← Back','contact.title':'Contact',
-                'contact.subtitle':'Interested in learning more about CIPAI? Get in touch.',
-                'contact.info':'For information about CIPAI, investment opportunities, healthcare beta access, or enterprise partnerships, reach out directly:',
-                'contact.response':'We respond within 48 business hours.',
-                'contact.topics.label':'Topics',
-                'contact.t1':'Healthcare Beta Access','contact.t2':'Enterprise Partnerships','contact.t3':'Investment Inquiries','contact.t4':'Infrastructure Programs',
-                'footer.copy':'© 2026 CIPAI Inc. All rights reserved.',
-                'footer.patent':'CIPAI Inc. · Delaware C-Corp · US Provisional Patent Application #64/063,591'
-            },
-            pt: {
-                'nav.back':'← Voltar','contact.title':'Contato',
-                'contact.subtitle':'Interessado em saber mais sobre o CIPAI? Entre em contato.',
-                'contact.info':'Para informações sobre o CIPAI, acesso ao beta em saúde, oportunidades de investimento ou parcerias enterprise, entre em contato diretamente:',
-                'contact.response':'Respondemos dentro de 48 horas úteis.',
-                'contact.topics.label':'Tópicos',
-                'contact.t1':'Acesso ao Beta em Saúde','contact.t2':'Parcerias Enterprise','contact.t3':'Oportunidades de Investimento','contact.t4':'Programas de Infraestrutura',
-                'footer.copy':'© 2026 CIPAI Inc. Todos os direitos reservados.',
-                'footer.patent':'CIPAI Inc. · Delaware C-Corp · Pedido de patente provisional nos EUA #64/063,591'
-            }
-        };
-        function applyLang(lang) { const dict=i18n[lang]; document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(dict[k]!==undefined)el.innerHTML=dict[k];}); document.documentElement.setAttribute('lang',lang==='pt'?'pt-BR':'en'); document.title=lang==='pt'?'Contato — CIPAI':'Contact — CIPAI'; }
-        function setLang(lang) { applyLang(lang); document.getElementById('btn-en').classList.toggle('active',lang==='en'); document.getElementById('btn-pt').classList.toggle('active',lang==='pt'); localStorage.setItem('cip-lang',lang); }
-        (function(){const s=localStorage.getItem('cip-lang');if(s&&s!=='en')setLang(s);})();
-    </script>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="stage" data-i18n="foot.stage">Protótipo operacional inicial — fase de validação controlada</p>
+    <p data-i18n="foot.ip">Pedido provisório de patente depositado nos Estados Unidos · cedido à CIPAI, Inc.</p>
+    <p>CIPAI, Inc. · Delaware C-Corp ·
+       <a href="/contact.html" data-i18n="foot.contact">Contato</a> ·
+       <a href="/privacy.html" data-i18n="foot.privacy">Política de privacidade</a></p>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  en: {
+    "c.kicker":"Contact","c.h":"A conversation with the founder.",
+    "c.lead":"For controlled validation, institutional conversation or any question about the project, the path is direct — there is no form and no intermediary.",
+    "c.btn":"founder@cipai.ai",
+    "c.t1":"What to send","c.p1":"Who you are, the institution, and what you would like to understand. If the conversation is about controlled validation, just say so — the path is described on the home page.",
+    "c.t2":"What not to send","c.p2":"Do not send patient data, operational files or confidential institutional information by unsolicited email. Any data handling happens only under prior agreement, with defined terms.",
+    "c.corp":"CIPAI, Inc. — Delaware C-Corp · Newark, Delaware, United States",
+
+    "brand.tag":"Governed healthcare decisions",
+    "nav.platform":"Platform","nav.finding":"Finding","nav.status":"Status","nav.founder":"Founder",
+    "hero.title":"CIPAI preserves evidence, uncertainty and human authority in consequential healthcare decisions.",
+    "hero.lead":"First proof: payer-return analysis in healthcare revenue integrity, where context loss is measurable in real operational files.",
+    "platform.kicker":"The platform",
+    "platform.p1":"CIPAI operates above the systems a healthcare institution already uses. It does not replace the ERP, the billing system or the medical record — it organises what they already produce into traceable decision paths, in which evidence, uncertainty and human confirmation remain visible over time.",
+    "platform.p2":"It was built as domain-agnostic infrastructure. The first application is payer-return analysis in the healthcare revenue cycle.",
+    "platform.inv":"Four principles are frozen in the architecture and are not configurable:",
+    "platform.i1":"Human authority","platform.i2":"Independent audit",
+    "platform.i3":"Traceability","platform.i4":"Isolation between organisations",
+    "finding.kicker":"What we found","finding.h":"Five per cent carried a signal.",
+    "finding.p1":"When a payer returns a statement, the billing team reacts to what is marked. What is marked is what the payer chose to mark.",
+    "finding.f1":"detail items, in one real return verified against the complete canonical file",
+    "finding.f2":"carried an explicit denial record","finding.f3":"of the total analysed",
+    "finding.p2":"The point is not to claim loss in the other 17,498. It is that an operation reading only the explicit denial signal cannot conclude what happened to them.",
+    "finding.p3":"<strong>What remains invisible when revenue integrity reacts only to what the payer explicitly labelled?</strong>",
+    "bounds.kicker":"Boundaries",
+    "bounds.t1":"No silent automation","bounds.p1":"Nothing runs without being visible.",
+    "bounds.t2":"No external action without human review","bounds.p2":"The system prepares and organises; the person authorises.",
+    "bounds.t3":"No integration required","bounds.p3":"Controlled validation runs on a file the institution already exports, with no change to any system.",
+    "built.kicker":"What we built",
+    "built.p1":"The architecture was frozen into twenty-two verifiable baselines <strong>before</strong> any implementation — not afterwards, as retroactive documentation.",
+    "built.p2":"That discipline is what allows us to state, for any analysis delivered, where every number came from: what was measured, what was inferred, and what remains dependent on information that is absent.",
+    "built.p3":"Execution core in validation. Experience layer defined. Interface development under way.",
+    "status.kicker":"Where we are",
+    "status.d1":"12 May 2026","status.m1":"First US provisional patent application filed",
+    "status.d2":"May 2026","status.m2":"Delaware incorporation completed",
+    "status.d3":"21 June 2026","status.m3":"Assignment to CIPAI, Inc. recorded",
+    "status.d4":"June–July 2026","status.m4":"Two real healthcare datasets analysed against canonical files",
+    "status.d5":"1 July 2026","status.m5":"Architecture frozen into auditable baselines",
+    "status.d6":"July 2026","status.m6":"Second provisional application drafted, pending filing",
+    "status.d7":"Ongoing","status.m7":"Microsoft ISV Success · AWS Activate",
+    "status.note":"There is no paying customer, no revenue and no product in operation by a third party.",
+    "founder.kicker":"Founder",
+    "founder.q":"\u201CTechnical excellence, hard work and intelligence do not guarantee good outcomes when the information is incomplete, distorted, or disconnected from the reality in which the decision has to work. CIPAI exists because that problem is structural.\u201D",
+    "founder.role":"Founder & CEO · Orthopedic surgeon",
+    "founder.bio":"Trained in Brazil, with advanced clinical and surgical training in Houston and Lyon. Prior executive leadership and companies of his own before CIPAI. The architecture was specified, frozen and verified by the founder; implementation is contracted and audited against the frozen baselines.",
+    "cta.kicker":"Controlled validation","cta.h":"Evidence before procurement.",
+    "cta.p1":"Send a payer-return file your team already exports as routine. CIPAI returns a governed analysis: what appears, what remains uncertain, and what deserves investigation.",
+    "cta.p2":"No integration. No automation. No licence commitment.",
+    "cta.btn":"Request founder conversation",
+    "foot.stage":"Early operational prototype — controlled validation phase",
+    "foot.ip":"US provisional patent application filed · assigned to CIPAI, Inc.",
+    "foot.contact":"Contact","foot.privacy":"Privacy Policy"
+  }
+};
+const PT = {};
+document.querySelectorAll('[data-i18n]').forEach(el => { PT[el.dataset.i18n] = el.innerHTML; });
+
+function setLang(lang) {
+  const dict = lang === 'en' ? I18N.en : PT;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = dict[el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
+  document.querySelectorAll('.lang button').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  try { localStorage.setItem('cipai.lang', lang); } catch (e) {}
+}
+document.querySelectorAll('.lang button').forEach(b =>
+  b.addEventListener('click', () => setLang(b.dataset.lang)));
+try {
+  const saved = localStorage.getItem('cipai.lang');
+  if (saved === 'en') setLang('en');
+  else if (!saved && (navigator.language || '').slice(0,2) !== 'pt') setLang('en');
+} catch (e) {}
+</script>
+
 </body>
 </html>
