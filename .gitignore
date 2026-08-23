@@ -5,3 +5,40 @@
 # temporarios de sistema
 Thumbs.db
 .DS_Store
+
+# ==========================================================
+# CIPAI - PUBLICATION-ONLY REPOSITORY
+# Este repositorio contem exclusivamente artefatos destinados
+# deliberadamente a publicacao publica. Qualquer excecao exige
+# decisao explicita: classificacao + finalidade + prazo.
+# Referencia: Parecer Limpeza Repositorio v1.0, secao 3.
+# ==========================================================
+
+# Demos e prototipos internos
+assets/demos/
+**/demo/
+**/prototype/
+**/prototipo/
+
+# Material interno / handoff / arquitetura
+*CONFIDENTIAL*
+*CONFIDENCIAL*
+*FROZEN*
+*HANDOFF*
+*HASAN*
+*_INTERNAL*
+*_WORKING*
+*_DRAFT*
+LEIA-ME*
+README-INTERNO*
+
+# Documentos e decks nao aprovados para publicacao
+docs/**
+!docs/CIPAI_Eretz_Deck_v1_0.pdf
+
+# Operacional e temporario
+*.bak
+*.tmp
+~$*
+.DS_Store
+Thumbs.db
