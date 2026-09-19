@@ -1,529 +1,447 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CIPAI — Decisão governada em saúde</title>
-<meta name="description" content="Camada governada entre evidência operacional, modelos de IA, confirmação humana e memória institucional. Primeira frente: ciclo financeiro-administrativo em saúde.">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/web/plex-sans-regular.woff2">
-<link rel="stylesheet" href="/assets/css/cipai-tokens.css">
-<link rel="stylesheet" href="/assets/css/cipai-base.css">
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CIPAI Healthcare — Integridade da Receita</title>
+<meta name="description" content="CIPAI é uma empresa americana de inteligência decisória. A solução Healthcare ajuda clínicas, hospitais e outros prestadores a compreender sua receita, esclarecer diferenças e preservar conhecimento para decisões melhores.">
 <style>
-  *,*::before,*::after { box-sizing: border-box; }
-  body { margin:0; }
-  .wrap { max-width: var(--w-page); margin:0 auto; padding:0 var(--s-lg); }
+/* IBM Plex Sans — self-hosted (SIL OFL 1.1). Padrão tipográfico universal CIPAI; zero chamadas a terceiros. */
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/IBMPlexSans-Regular.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/IBMPlexSans-Medium.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/IBMPlexSans-SemiBold.woff2') format('woff2')}
 
-  /* navegação */
-  nav.top { border-bottom: var(--r-hairline) solid var(--c-hairline); background: var(--c-paper);
-            position: sticky; top:0; z-index:50; }
-  nav.top .wrap { display:flex; align-items:center; gap: var(--s-lg); height:68px; }
-  .brand { font-family: var(--f-head); font-weight:700; font-size:1.15rem; color: var(--c-navy);
-           letter-spacing:-0.01em; text-decoration:none; }
-  .brand span { color: var(--c-teal); font-weight:400; font-size:.78rem; margin-left:.6rem;
-                letter-spacing:0; }
-  nav.top .links { margin-left:auto; display:flex; gap: var(--s-lg); align-items:center; }
-  nav.top a.nav { color: var(--c-steel); text-decoration:none; font-size:.9rem; }
-  nav.top a.nav:hover { color: var(--c-navy); }
-  .lang { display:flex; border: var(--r-hairline) solid var(--c-hairline); border-radius: var(--rad-sm);
-          overflow:hidden; }
-  .lang button { border:0; background:transparent; padding:.34rem .62rem; font: inherit;
-                 font-size:.78rem; color: var(--c-mute); cursor:pointer; }
-  .lang button[aria-pressed="true"] { background: var(--c-navy); color: var(--c-paper); }
+:root{
+  --font:'IBM Plex Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --canvas:#f5ede5;--surface:#fdfaf6;--subtle:#eee3d6;--sunken:#e6d6c1;--selected:#e1dfd8;--split:#fbf3ea;
+  --ink:#1a1a1a;--ink2:#5a5852;--ink3:#605e57;--line:#c7c5bb;--line2:#e1dfd8;--strong:#3b3934;
+  --amber:#8a5714;--amber-bg:#f6e4c6;--amber-solid:#c9761a;--ok:#4f5d1c;--ok-bg:#e4e1c2;--err:#b33326;--err-bg:#fbf0ee;
+  --inverse:#1a1a1a;--on-inverse:#fafaf7;--radius-sm:6px;--radius-md:10px;--radius-lg:14px;
+  --shadow:0 1px 2px rgba(26,20,10,.05);--measure:72ch;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.58;-webkit-font-smoothing:antialiased}
+a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}:focus-visible{outline:3px solid var(--amber-solid);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}.measure{max-width:var(--measure)}
+h1,h2,h3{font-weight:600;line-height:1.13;letter-spacing:-.018em;margin:0 0 .55em}h1{font-size:clamp(2.15rem,5.2vw,3.55rem);max-width:18ch}h2{font-size:clamp(1.65rem,3.6vw,2.45rem);max-width:24ch}h3{font-size:1.12rem}.eyebrow{font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin-bottom:13px}.lede{font-size:1.18rem;max-width:68ch}.muted{color:var(--ink2)}.small{font-size:.9rem}.tiny{font-size:.82rem}strong{font-weight:600}
+header{position:sticky;top:0;background:rgba(245,237,229,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line2);z-index:20}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:inline-flex;align-items:center;gap:16px;font-weight:600;letter-spacing:.07em;color:var(--ink);font-size:1.34rem;line-height:1.15;white-space:nowrap}.brand-name{display:block}.brand small{display:block;padding-left:16px;border-left:1px solid var(--line);font-size:.81rem;font-weight:400;letter-spacing:0;color:var(--ink2);line-height:1.35;white-space:normal;max-width:205px}.brand-sector{color:var(--ink);font-weight:600}.navlinks{display:flex;align-items:center;gap:18px;font-size:.9rem}.navlinks a{color:var(--ink)}.lang{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:var(--radius-sm);padding:6px 10px;font:inherit;font-size:.82rem;cursor:pointer}
+html[lang="pt-BR"] .en{display:none}html[lang="en"] .pt{display:none}
+.hero{padding:92px 0 76px}.hero .lede{margin-top:18px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:var(--radius-sm);border:1px solid var(--ink);font-weight:600}.btn.primary{background:var(--inverse);color:var(--on-inverse)}.btn.primary:hover{text-decoration:none;background:var(--strong)}.btn.secondary{color:var(--ink);background:transparent}.btn.secondary:hover{text-decoration:none;background:var(--surface)}
+section{padding:72px 0}section+section{border-top:1px solid var(--line2)}.section-intro{font-size:1.08rem;max-width:72ch}.stat{margin:30px 0 18px;padding:28px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow)}.stat .number{font-size:clamp(2.2rem,6vw,4.2rem);font-weight:600;line-height:1;color:var(--amber);letter-spacing:-.04em}.stat .caption{margin-top:9px;max-width:70ch}.source{font-size:.82rem;color:var(--ink2);margin-top:14px}.source a{text-decoration:underline;text-underline-offset:2px}
+.callout{padding:22px 24px;border-left:4px solid var(--amber-solid);background:var(--amber-bg);max-width:78ch;margin:28px 0}.callout p:last-child{margin-bottom:0}.question{font-size:clamp(1.4rem,3vw,2rem);font-weight:600;line-height:1.25;max-width:28ch;margin:34px 0 18px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow)}.card p:last-child{margin-bottom:0}.card .label{font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:var(--amber);font-weight:600;margin-bottom:8px}.result{margin-top:14px;padding-top:14px;border-top:1px solid var(--line2);font-size:.93rem}.note{font-size:.85rem;color:var(--ink2);margin-top:16px}
+.learning{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:start}.steps{display:grid;gap:12px}.step{display:grid;grid-template-columns:42px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line2)}.step:last-child{border-bottom:0}.step .n{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--amber-bg);color:var(--amber);font-weight:600}.step p{margin:.2em 0 0;color:var(--ink2)}
+.adoption{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}.adoption .panel{padding:24px;border-radius:var(--radius-lg);border:1px solid var(--line);background:var(--surface)}.adoption ul{margin:10px 0 0;padding-left:20px}.adoption li{margin:7px 0}.panel.highlight{border-color:var(--amber-solid);background:var(--split)}
+.audiences{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}.audiences .card{min-height:100%;display:flex;flex-direction:column;align-items:flex-start}.audiences .mini-link{margin-top:auto;padding-top:18px}.audiences .card:first-child{border-color:var(--amber-solid)}.mini-link{display:inline-block;margin-top:14px;font-weight:600}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}.trust .item{padding:20px;border-top:2px solid var(--amber-solid);background:var(--surface)}.trust .item p{margin:5px 0 0;color:var(--ink2);font-size:.93rem}
+.final{background:var(--surface);border-top:1px solid var(--line)!important}.finalbox{max-width:820px}.final h2{max-width:26ch}#publicos>.wrap>.eyebrow{text-align:center;max-width:none;margin-left:auto;margin-right:auto}#publicos>.wrap>h2{text-align:center;max-width:44ch;margin-left:auto;margin-right:auto;text-wrap:balance}#publicos .callout{max-width:85ch;margin:30px auto 0;padding:26px 30px}#publicos .callout p{max-width:none}.footer{padding:30px 0 42px;font-size:.86rem;color:var(--ink2)}.footer-row{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:36px;row-gap:18px;align-items:start}.footer-identity{display:grid;gap:5px}.footer-identity strong{font-size:1.08rem;letter-spacing:.06em;color:var(--ink)}.footer-links{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;padding-top:3px}.footer a{color:var(--ink2)}.footer-legal{grid-column:1/-1;border-top:1px solid var(--line2);font-size:.79rem;color:var(--ink3);padding-top:14px}
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;margin-top:28px}.contact-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px}.contact-card ul{padding-left:18px;margin-bottom:0}.contact-card li{margin:7px 0}.warning{margin-top:24px;padding:18px 20px;background:var(--amber-bg);border-left:4px solid var(--amber-solid)}
+@media(max-width:900px){.cards,.audiences{grid-template-columns:1fr}.learning,.adoption,.contact-grid{grid-template-columns:1fr}.trust{grid-template-columns:1fr 1fr}.navlinks a:not(.contact-link){display:none}}
+@media(max-width:560px){.brand{gap:9px;font-size:1.11rem}.brand small{font-size:.67rem;padding-left:9px;max-width:152px}.footer-row{grid-template-columns:1fr;gap:16px}.footer-legal{grid-column:1}.footer-links{padding-top:0}body{font-size:16px}.wrap{padding:0 18px}.hero{padding:72px 0 58px}section{padding:56px 0}.trust{grid-template-columns:1fr}.navlinks .contact-link{display:none}.stat{padding:22px}.actions{flex-direction:column;align-items:stretch}.btn{width:100%}}
 
-  /* seções */
-  section { padding: var(--s-2xl) 0; border-bottom: var(--r-hairline) solid var(--c-hairline); }
-  section:last-of-type { border-bottom:0; }
-  .kicker { font-size:.74rem; letter-spacing:.09em; text-transform:uppercase;
-            color: var(--c-teal); font-weight:600; margin-bottom: var(--s-sm); }
+/* v2.1.2 — ajustes exclusivamente locais: seção de públicos e rodapés. */
+#publicos > .wrap > .eyebrow {
+  text-align:left;
+  max-width:none;
+  margin:0 0 18px;
+  font-size:clamp(.84rem,1.05vw,.94rem);
+  font-weight:600;
+  color:var(--amber);
+  letter-spacing:.075em;
+}
+#publicos > .wrap > h2 {
+  text-align:center;
+  max-width:30ch;
+  margin:0 auto;
+  font-size:clamp(2.05rem,3.8vw,2.65rem);
+  line-height:1.14;
+  letter-spacing:-.025em;
+  text-wrap:balance;
+}
+#publicos .audiences {
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin-top:34px;
+  align-items:stretch;
+}
+#publicos .audiences .card {width:100%;min-width:0;min-height:100%;padding:24px 21px;}
+#publicos .audiences .card .label {font-size:.76rem;line-height:1.4;}
+#publicos .audiences .card h3 {font-size:1.09rem;line-height:1.27;letter-spacing:-.012em;}
+#publicos .audiences .card p {
+  text-indent:.75cm; /* 3 colunas estreitas: exceção responsiva ao recuo solicitado de 2 cm */
+  text-align:left;
+  line-height:1.62;
+  margin:13px 0 0;
+  overflow-wrap:break-word;
+}
+#publicos .audiences .card .mini-link {align-self:flex-start;max-width:100%;line-height:1.45;}
+#publicos .callout {
+  width:100%;max-width:none;
+  margin:32px auto 0;
+  padding:28px 32px;
+  box-sizing:border-box;
+}
+#publicos .callout p {
+  max-width:none;
+  margin:0;
+  text-indent:2cm;
+  text-align:justify;
+  line-height:1.68;
+  hyphens:auto;
+}
+.footer {padding:36px 0 40px;}
+.footer-row {grid-template-columns:minmax(0,1fr) auto;gap:0 28px;align-items:center;}
+.footer-identity {display:flex;align-items:center;gap:18px;min-width:0;}
+.footer-identity strong {font-size:1.28rem;font-weight:600;letter-spacing:.065em;line-height:1.15;flex:none;}
+.footer-identity .footer-signature {
+  display:block;
+  border-left:1px solid var(--line);
+  padding-left:18px;
+  line-height:1.4;
+  min-width:0;
+}
+.footer-links {padding:0;justify-content:flex-end;}
+.footer-legal {grid-column:1/-1;margin-top:23px;padding-top:16px;line-height:1.5;}
+@media(max-width:900px){
+  #publicos .audiences {grid-template-columns:1fr;gap:16px;}
+  #publicos .audiences .card p {text-indent:2cm;}
+  #publicos > .wrap > h2 {max-width:32ch;}
+}
+@media(max-width:560px){
+  #publicos > .wrap > .eyebrow {font-size:.82rem;letter-spacing:.06em;}
+  #publicos > .wrap > h2 {font-size:clamp(1.8rem,7.4vw,2.2rem);max-width:none;}
+  #publicos .audiences .card p {text-indent:.65cm;}
+  #publicos .callout {padding:24px 19px;}
+  #publicos .callout p {text-indent:.65cm;text-align:left;hyphens:none;}
+  .footer-row {grid-template-columns:1fr;gap:17px;}
+  .footer-identity {align-items:center;gap:12px;}
+  .footer-identity strong {font-size:1.17rem;}
+  .footer-identity .footer-signature {padding-left:12px;font-size:.84rem;}
+  .footer-links {justify-content:flex-start;}
+  .footer-legal {grid-column:1;margin-top:2px;padding-top:15px;}
+}
 
-  /* herói */
-  .hero { padding: var(--s-3xl) 0 var(--s-2xl); }
-  .hero h1 { font-size: clamp(1.9rem, 4.4vw, var(--t-display));
-             line-height: var(--t-display-lh); letter-spacing: var(--t-display-tr);
-             max-width: 20ch; margin-bottom: var(--s-lg); }
-  .hero .lead { font-size:1.12rem; color: var(--c-steel); max-width: 58ch;
-                line-height:1.55; }
-
-  /* números */
-  .figs { display:grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-md);
-          margin: var(--s-lg) 0; }
-  .fig { background: var(--c-surface); border-left: var(--r-thick) solid var(--c-teal);
-         padding: var(--s-md); }
-  .fig b { display:block; font-family: var(--f-head); font-size:1.85rem; color: var(--c-navy);
-           line-height:1.1; }
-  .fig small { color: var(--c-mute); display:block; margin-top:.3rem; }
-
-  /* grades */
-  .grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-lg); }
-  .grid2 { display:grid; grid-template-columns: 1.1fr .9fr; gap: var(--s-xl); align-items:start; }
-  .card h3 { margin-bottom:.4rem; }
-  .card p { color: var(--c-mute); font-size:.94rem; margin:0; max-width:none; }
-
-  /* marcos */
-  table.miles { font-size:.9rem; }
-  table.miles td:first-child { white-space:nowrap; color: var(--c-teal); font-weight:600;
-                               width:1%; }
-
-  /* fundador */
-  .quote { font-size:1.06rem; color: var(--c-steel); border-left: var(--r-thick) solid var(--c-navy);
-           padding-left: var(--s-md); max-width:62ch; }
-  .sig { margin-top: var(--s-md); }
-  .sig b { color: var(--c-navy); }
-  .sig span { color: var(--c-mute); font-size:.9rem; }
-
-  /* chamada */
-  .cta { display:inline-block; background: var(--c-navy); color: var(--c-paper);
-         text-decoration:none; padding:.8rem 1.5rem; border-radius: var(--rad-sm);
-         font-weight:600; font-size:.98rem; }
-  .cta:hover { background: var(--c-teal); }
-  .plain { list-style:none; padding:0; margin: var(--s-md) 0; }
-  .plain li { padding:.3rem 0 .3rem 1.2rem; position:relative; color: var(--c-ink); }
-  .plain li::before { content:"—"; position:absolute; left:0; color: var(--c-teal); }
-
-  footer { padding: var(--s-xl) 0; color: var(--c-mute); font-size:.84rem; }
-  footer a { color: var(--c-steel); }
-  footer .stage { color: var(--c-amber); font-weight:600; }
-
-
-  /* herói em duas colunas com cartão de prova */
-  .hero .cols { display:grid; grid-template-columns: 1.15fr .85fr; gap: var(--s-2xl);
-                align-items:start; }
-  .proof { background: var(--c-surface); border-left: var(--r-thick) solid var(--c-teal);
-           padding: var(--s-lg); }
-  .proof .lbl { font-size:.72rem; letter-spacing:.08em; text-transform:uppercase;
-                color: var(--c-steel); font-weight:600; margin-bottom: var(--s-md); }
-  .proof .n { margin-bottom: var(--s-md); }
-  .proof .n b { display:block; font-family: var(--f-head); font-size:2rem; color: var(--c-navy);
-                line-height:1; }
-  .proof .n small { color: var(--c-mute); font-size:.82rem; }
-  .proof .q { border-top: var(--r-hairline) solid var(--c-hairline); padding-top: var(--s-md);
-              font-size:.88rem; color: var(--c-steel); }
-  .micro { font-size:.82rem; color: var(--c-amber); font-weight:600; margin-top: var(--s-md); }
-
-  /* cartões */
-  .cards { display:grid; gap: var(--s-md); }
-  .cards.c4 { grid-template-columns: repeat(4, 1fr); }
-  .cards.c3 { grid-template-columns: repeat(3, 1fr); }
-  .cards.c2 { grid-template-columns: repeat(2, 1fr); }
-  .box { border: var(--r-hairline) solid var(--c-hairline); border-top: var(--r-thick) solid var(--c-teal);
-         padding: var(--s-md); }
-  .box h3 { font-size:1rem; margin-bottom:.35rem; color: var(--c-navy); }
-  .box p { font-size:.88rem; color: var(--c-mute); margin:0; max-width:none; }
-  .box.navy { border-top-color: var(--c-navy); }
-  .box.amber { border-top-color: var(--c-amber); }
-
-  /* chips de estado */
-  .chips { display:flex; flex-wrap:wrap; gap:.5rem; margin: var(--s-md) 0; }
-  .chip { background: var(--c-surface); border: var(--r-hairline) solid var(--c-hairline);
-          border-radius: var(--rad-lg); padding:.34rem .8rem; font-size:.84rem;
-          color: var(--c-steel); }
-
-  /* linha do tempo compacta */
-  .tl { display:grid; grid-template-columns: max-content 1fr; gap:.55rem var(--s-lg);
-        font-size:.92rem; }
-  .tl dt { color: var(--c-teal); font-weight:600; white-space:nowrap; }
-  .tl dd { margin:0; }
-
-  /* CTA no header */
-  .cta.sm { padding:.45rem 1rem; font-size:.85rem; }
-
-  @media (max-width: 900px) {
-    .hero .cols { grid-template-columns:1fr; }
-    .cards.c4 { grid-template-columns: repeat(2, 1fr); }
+/* v2.1.3 — padronização tipográfica e de espaçamento.
+   Mantém a estrutura, texto, links e paleta da v2.1.2; sobrepõe apenas o layout. */
+:root { --body-leading: 1.68; --paragraph-space: 1.15em; }
+body { line-height: var(--body-leading); }
+section[id] { scroll-margin-top: 105px; }
+.wrap { max-width: 1120px; }
+/* Identidade de cabeçalho consistente na home e no contato. */
+.nav { min-height: 88px; gap: 24px; }
+.brand { font-size: 1.64rem; gap: 19px; letter-spacing: .075em; flex-shrink: 0; }
+.brand small { padding-left: 19px; max-width: 215px; font-size: .89rem; line-height: 1.33; }
+.brand-sector { font-weight: 600; }
+.navlinks { gap: 21px; font-size: .91rem; white-space: nowrap; }
+/* Hierarquia geral: contexto → título → explicação → evidências/cartões. */
+section > .wrap > .eyebrow, .learning .eyebrow, .hero .eyebrow {
+  font-size: clamp(.95rem, 1.25vw, 1.06rem);
+  font-weight: 600;
+  letter-spacing: .06em;
+  line-height: 1.42;
+  margin-bottom: 20px;
+}
+section h2 { font-size: clamp(1.9rem, 3.2vw, 2.55rem); max-width: 36ch; line-height: 1.17; }
+section h3 { font-size: 1.19rem; line-height: 1.34; font-weight: 600; }
+section > .wrap > h2 + p, section .learning h2 + p { margin-top: 22px; }
+/* Leitura corrida: recuo de primeira linha e espaçamento entre parágrafos.
+   Blocos estreitos recebem adaptação expressa adiante para não criar linhas inviáveis. */
+main section p:not(.note):not(.source):not(.caption):not(.question):not(.result) {
+  text-indent: 2cm;
+  margin-bottom: var(--paragraph-space);
+  line-height: 1.68;
+  text-align: justify;
+  hyphens: auto;
+}
+.hero p.lede + p.lede { margin-top: 22px; }
+/* Componentes: mais distância entre marcador, título e corpo. */
+.card { padding: 26px 24px; }
+.card .label {
+  font-size: .89rem;
+  font-weight: 700;
+  line-height: 1.43;
+  letter-spacing: .055em;
+  margin-bottom: 17px;
+}
+.card h3 { font-size: 1.19rem; line-height: 1.34; margin-bottom: 20px; }
+main section .card p:not(.note):not(.result) {
+  text-indent: .85cm;
+  margin: 0 0 19px;
+  text-align: left;
+  line-height: 1.68;
+  hyphens: auto;
+}
+main section .card p + p { margin-top: 21px !important; }
+.card .result { margin-top: 20px; padding-top: 17px; }
+/* Seção de públicos: marcador de contexto legível à esquerda; tese ampla e central. */
+#publicos > .wrap { max-width: 1230px; }
+#publicos > .wrap > .eyebrow {
+  text-align: left;
+  font-size: clamp(1.13rem, 1.5vw, 1.31rem);
+  font-weight: 700;
+  letter-spacing: .045em;
+  line-height: 1.35;
+  margin: 0 0 27px;
+}
+#publicos > .wrap > h2 {
+  text-align: center;
+  max-width: 1020px;
+  font-size: clamp(2.05rem, 3.35vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -.024em;
+  text-wrap: balance;
+  margin: 0 auto;
+}
+#publicos .audiences {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 43px;
+  align-items: stretch;
+}
+#publicos .audiences .card { min-width: 0; padding: 29px 24px 25px; }
+#publicos .audiences .card .label {
+  font-size: .91rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  letter-spacing: .042em;
+}
+#publicos .audiences .card h3 {
+  font-size: 1.22rem;
+  font-weight: 700;
+  line-height: 1.37;
+  margin: 0 0 23px;
+  letter-spacing: -.01em;
+}
+#publicos .audiences .card p {
+  text-indent: .85cm; /* exceção dimensional: coluna estreita não comporta 2 cm sem prejudicar a leitura */
+  text-align: left;
+  margin: 0 0 20px;
+  line-height: 1.7;
+}
+#publicos .audiences .card p + p { margin-top: 23px !important; }
+#publicos .audiences .card .mini-link { margin-top: auto; padding-top: 24px; align-self: flex-start; }
+#publicos .callout {
+  width: 100%;
+  max-width: none;
+  margin: 35px auto 0;
+  padding: 30px 38px;
+}
+#publicos .callout p { margin: 0; text-indent: 2cm; text-align: justify; line-height: 1.72; }
+/* Harmonização transversal de painéis e boxes nas duas páginas. */
+.adoption .panel, .contact-card { padding: 27px; }
+.adoption .panel h3, .contact-card h3 { margin-bottom: 18px; }
+.contact-grid { gap: 24px; }
+/* Nos microsumários em grades muito estreitas, recuo curto preserva legibilidade. */
+.step p, .trust .item p { text-indent: .4cm !important; text-align: left !important; }
+/* Rodapé já aprovado: CIPAI | assinatura; links alinhados; razão social abaixo. */
+.footer .wrap { max-width: 1120px; }
+@media (min-width: 901px) and (max-width: 1140px) {
+  .nav { gap: 16px; }
+  .brand { font-size: 1.48rem; gap: 13px; }
+  .brand small { padding-left: 13px; font-size: .8rem; max-width: 174px; }
+  .navlinks { gap: 12px; font-size: .85rem; }
+  #publicos .audiences .card { padding: 24px 18px; }
+}
+@media (max-width: 900px) {
+  .nav { min-height: 82px; }
+  .brand { font-size: 1.45rem; }
+  .brand small { font-size: .78rem; }
+  #publicos .audiences { grid-template-columns: 1fr; gap: 17px; }
+  #publicos > .wrap > h2 { max-width: 100%; }
+  #publicos .audiences .card p { text-indent: 2cm; }
+  #publicos .callout { padding: 28px 30px; }
+}
+@media (max-width: 560px) {
+  .nav { min-height: 76px; gap: 8px; }
+  section[id] { scroll-margin-top: 85px; }
+  .brand { font-size: 1.2rem; gap: 10px; }
+  .brand small { font-size: .7rem; padding-left: 10px; max-width: 154px; }
+  .navlinks { gap: 9px; }
+  .lang { padding: 6px 9px; }
+  section > .wrap > .eyebrow, .learning .eyebrow, .hero .eyebrow { font-size: .91rem; margin-bottom: 15px; }
+  main section p:not(.note):not(.source):not(.caption):not(.question):not(.result) {
+    text-indent: .65cm;
+    text-align: left;
+    hyphens: none;
+    margin-bottom: 1.08em;
   }
-  @media (max-width: 640px) {
-    .cards.c4, .cards.c3, .cards.c2 { grid-template-columns:1fr; }
-    .tl { grid-template-columns:1fr; gap:.15rem; }
-    .tl dd { margin-bottom:.6rem; }
-    .cta.sm { display:none; }
-  }
+  .card { padding: 23px 19px; }
+  .card .label { font-size: .86rem; margin-bottom: 14px; }
+  .card h3 { font-size: 1.12rem; margin-bottom: 17px; }
+  main section .card p:not(.note):not(.result) { text-indent: .65cm; }
+  #publicos > .wrap > .eyebrow { font-size: 1.05rem; margin-bottom: 19px; letter-spacing: .035em; }
+  #publicos > .wrap > h2 { font-size: clamp(1.83rem, 7.3vw, 2.2rem); }
+  #publicos .audiences { margin-top: 29px; }
+  #publicos .audiences .card { padding: 24px 20px; }
+  #publicos .audiences .card .label { font-size: .89rem; margin-bottom: 16px; }
+  #publicos .audiences .card h3 { font-size: 1.17rem; margin-bottom: 18px; }
+  #publicos .audiences .card p { text-indent: .65cm; }
+  #publicos .callout { padding: 26px 21px; margin-top: 24px; }
+  #publicos .callout p { text-indent: .65cm; text-align: left; }
+  .footer .wrap { max-width: 1120px; }
+}
 
-  @media (max-width: 760px) {
-    .grid3, .grid2, .figs { grid-template-columns: 1fr; }
-    nav.top .links a.nav { display:none; }
-  }
-</style>
 
-<style>
-  /* herói invertido — a observação vem antes da empresa */
-  .lede { font-family: var(--f-head); font-size: clamp(1.6rem,3.6vw,2.5rem); line-height:1.18;
-          color: var(--c-navy); letter-spacing:-0.015em; max-width:24ch; margin:0 0 var(--s-lg); }
-  .lede em { font-style:normal; color: var(--c-teal); }
-  .numstrip { display:flex; gap: var(--s-xl); flex-wrap:wrap; margin: var(--s-lg) 0; }
-  .numstrip div b { display:block; font-family: var(--f-head); font-size:2.3rem; color: var(--c-navy);
-                    line-height:1; }
-  .numstrip div small { color: var(--c-mute); font-size:.84rem; }
-  /* seções como perguntas */
-  .q { font-family: var(--f-head); font-size:1.5rem; color: var(--c-navy); line-height:1.25;
-       letter-spacing:-0.01em; margin:0 0 var(--s-md); max-width:30ch; }
-  .q::before { content:""; display:block; width:34px; height:3px; background: var(--c-teal);
-               margin-bottom: var(--s-md); }
-  .ans { max-width:64ch; }
-  .ans p { margin-bottom: var(--s-md); }
-  /* evidência verificável */
-  table.ev { font-size:.9rem; width:100%; }
-  table.ev td { padding:.5rem .8rem; vertical-align:top; }
-  table.ev td:first-child { color: var(--c-teal); font-weight:600; white-space:nowrap; width:1%; }
-  table.ev td:last-child { color: var(--c-mute); font-size:.82rem; white-space:nowrap; width:1%; }
-  /* riscos */
-  .risk { border-left: var(--r-thick) solid var(--c-amber); background: var(--c-surface);
-          padding: var(--s-md); margin-bottom: var(--s-md); }
-  .risk h3 { font-size:.98rem; margin-bottom:.3rem; }
-  .risk p { font-size:.88rem; color: var(--c-mute); margin:0; max-width:none; }
-  .ask { border-top: var(--r-thick) solid var(--c-navy); padding-top: var(--s-md); }
-  .ask h3 { font-size:1rem; margin-bottom:.4rem; }
-  .ask p { font-size:.9rem; color:var(--c-mute); margin:0 0 .5rem; max-width:none; }
-  .ask .give { font-size:.86rem; color: var(--c-steel); border-top: var(--r-hairline) solid var(--c-hairline);
-               padding-top:.5rem; }
-</style>
-<style>
-  /* header nunca quebra no desktop */
-  nav.top .wrap { flex-wrap: nowrap; }
-  nav.top a.nav { white-space: nowrap; font-size: .86rem; }
-  nav.top .links { gap: var(--s-md); }
-  .brand { font-size: 1.3rem; white-space: nowrap; }
-  .brand span { display: none; }
-  .box.green { border-top-color: var(--c-green); }
-  @media (max-width: 1180px) { nav.top a.nav { display: none; } }
+/* v2.1.3 → layout centralização consolidada (somente CSS; nenhum texto alterado).
+   Padroniza cabeçalhos de seção (eyebrow + h2 + parágrafo de abertura) centralizados,
+   tamanho de h2 uniforme e espaçamento consistente. Cards e exemplos permanecem como estão. */
+
+/* 1. Cabeçalho de seção centralizado e uniforme em TODAS as seções de conteúdo */
+#comecar > .wrap > .eyebrow,
+#entrega > .wrap > .eyebrow,
+#aprendizado > .wrap > .eyebrow,
+#confianca > .wrap > .eyebrow,
+#publicos > .wrap > .eyebrow,
+section.final > .wrap > .eyebrow{
+  text-align:center; margin-left:auto; margin-right:auto; max-width:none; margin-bottom:16px;
+}
+#comecar > .wrap > h2,
+#entrega > .wrap > h2,
+#aprendizado > .wrap > h2,
+#confianca > .wrap > h2,
+#publicos > .wrap > h2,
+section.final > .wrap > h2{
+  text-align:center; margin-left:auto; margin-right:auto;
+  max-width:30ch;                     /* mesmo teto para todos os títulos de seção */
+  font-size:clamp(1.65rem,3.4vw,2.15rem);  /* padrão único, menor que o 2.45rem do publicos */
+  text-wrap:balance; margin-bottom:.9em;
+}
+/* parágrafo de abertura logo após o h2 da seção: centralizado e com respiro */
+#comecar > .wrap > h2 + p,
+#entrega > .wrap > h2 + p,
+#aprendizado > .wrap > h2 + p,
+#confianca > .wrap > h2 + p,
+#publicos > .wrap > h2 + p,
+section.final > .wrap > h2 + p{
+  text-align:center; margin-left:auto; margin-right:auto; max-width:62ch; margin-bottom:40px;
+}
+
+/* 2. Distanciamento do título de públicos para os cards (estava muito próximo) */
+#publicos > .wrap > .audiences{ margin-top:8px; }
+
+/* 3. As frases de fecho em destaque (amarelas no print) — centralizar */
+#comecar > .wrap > h2:last-of-type{ margin-top:8px; }
+
+
+/* 4. Frases de transição/fecho em destaque (p.question) — centralizadas e com respiro */
+.question{
+  text-align:center; max-width:34ch; margin-left:auto; margin-right:auto;
+  margin-top:20px; margin-bottom:8px;
+}
+
 </style>
 </head>
 <body>
+<header><div class="wrap nav">
+  <a class="brand" href="#top" style="font-size: 2em; margin-top: 0px; margin-bottom: 0px; text-align: left;"><span class="brand-name">CIPAI</span><small><span class="pt"><strong class="brand-sector">Healthcare</strong><br>Integridade da Receita</span><span class="en"><strong class="brand-sector">Healthcare</strong><br>Revenue Integrity</span></small></a>
+  <nav class="navlinks">
+    <a href="#problema"><span class="pt">O desafio</span><span class="en">The challenge</span></a>
+    <a href="#entrega"><span class="pt">Exemplos de análise</span><span class="en">Analysis examples</span></a>
+    <a href="#comecar"><span class="pt">Como começar</span><span class="en">How to start</span></a>
+    <a class="contact-link" href="contact.html"><span class="pt">Contato</span><span class="en">Contact</span></a>
+    <button class="lang" id="lang" aria-label="Switch to English">EN</button>
+  </nav>
+</div></header>
+<main id="top">
+<section class="hero"><div class="wrap">
+  <div class="eyebrow" style="text-align: left; font-size: 2em; margin-top: 0px; margin-bottom: 0px;"><span class="pt">CIPAI · Inteligência decisória para organizações</span><span class="en">CIPAI · Decision intelligence for organizations</span></div>
+  <h1 style="font-size: 2em; text-align: center; margin: 56px auto; max-width: 56ch;"><span class="pt">O ERP processa. O CIPAI explica, prioriza e aprende.</span><span class="en">The ERP processes. CIPAI explains, prioritizes and learns.</span></h1>
+  <p class="lede" style="text-align: center; margin-left: auto; margin-right: auto; max-width: 98ch;"><span class="pt"><strong>O CIPAI é uma empresa americana de inteligência decisória que utiliza inteligência artificial para apoiar análises fundamentadas em evidências.</strong> Sua solução CIPAI Healthcare ajuda clínicas, hospitais e outros prestadores de saúde a examinar informações de atendimento, faturamento, contratos e pagamentos, identificar possíveis inconsistências e entender o que merece atenção.</span><span class="en"><strong>CIPAI is a U.S. decision-intelligence company that uses artificial intelligence to support evidence-based analysis.</strong> Its CIPAI Healthcare solution helps clinics, hospitals and other healthcare providers examine care, billing, contract and payment information, identify potential discrepancies and understand what deserves attention.</span></p>
+  <p class="lede muted" style="text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 60px; max-width: 96ch; font-size: 1.1em;"><span class="pt">Comece com arquivos e documentos que sua instituição já possui, sem substituir o sistema de gestão nem iniciar um grande projeto de integração. Conheça a proposta e converse sobre um caso concreto.</span><span class="en">Start with files and documents your organization already has, without replacing its management system or launching a large integration project. Explore the approach and discuss a concrete case.</span></p>
+  <div class="actions"><a class="btn primary" href="contact.html" style="margin-top: 24px;"><span class="pt">Conversar sobre um caso</span><span class="en">Discuss a case</span></a><a class="btn secondary" href="#entrega" style="margin-top: 24px;"><span class="pt">Ver como funciona</span><span class="en">See how it works</span></a></div>
+</div></section>
 
-<nav class="top">
-  <div class="wrap">
-    <a class="brand" href="/">CIPAI<span data-i18n="tag">Decisão governada em saúde</span></a>
-    <div class="links">
-      <a class="nav" href="#produto" data-i18n="nv1">Produto</a>
-      <a class="nav" href="#evidencia" data-i18n="nv2">Evidência</a>
-      <a class="nav" href="#diferenca" data-i18n="nv3">Diferença</a>
-      <a class="nav" href="#alcance" data-i18n="nv4">Alcance</a>
-      <a class="nav" href="#riscos" data-i18n="nv5">Riscos</a>
-      <a class="nav" href="#ajuda" data-i18n="nv6">Ajuda</a>
-      <a class="cta sm" href="#ajuda" data-i18n="ncta">Falar com founder</a>
-      <div class="lang">
-        <button type="button" data-lang="pt" aria-pressed="true">PT</button>
-        <button type="button" data-lang="en" aria-pressed="false">EN</button>
-      </div>
-    </div>
+<section id="problema"><div class="wrap">
+  <div class="eyebrow" style="font-size: 2em; text-align: left;"><span class="pt">O problema visível — e o que pode estar além?</span><span class="en">The visible problem — and what may exist beyond it</span></div>
+  <h2 style="text-align: center; margin: 56px auto; font-size: 2em; max-width: 56ch;"><span class="pt">Seu sistema pode estar funcionando corretamente. Ainda assim, vale perguntar: toda a receita foi corretamente faturada, recebida e explicada?</span><span class="en">Your system may be working correctly. It is still worth asking: was all revenue properly billed, received and explained?</span></h2>
+  <p class="section-intro" style="text-align: center; margin-left: auto; margin-right: auto; max-width: 94ch; font-size: 1.1em;"><span class="pt">Ter um ERP, uma equipe de faturamento, auditoria ou ferramentas de inteligência artificial é importante. Mas a presença dessas soluções, por si só, não demonstra que todo serviço realizado chegou a ser cobrado, que cada pagamento seguiu as condições contratuais ou que todas as diferenças foram compreendidas.</span><span class="en">Having an ERP, billing team, audit process or AI tools matters. But their presence alone does not prove that every service performed was billed, every payment followed contract terms, or every difference was understood.</span></p>
+  <div class="stat" style="margin-top: 62px; margin-bottom: 60px; font-size: 1.2em;"><div class="number">R$ 5,8 bi</div><p class="caption pt">Foram retidos por glosas em 2024, em levantamento da Anahp com 85 hospitais privados associados. A glosa inicial gerencial média foi de 15,89%.</p><p class="caption en"><strong>in payments withheld through denials in 2024</strong>, in an Anahp survey of 85 private member hospitals. The average initial management denial rate was 15.89%.</p><p class="source"><span class="pt">Fonte: Anahp, Balanço Observatório 2025. Glosa inicial não significa perda definitiva.</span><span class="en">Source: Anahp, Observatório 2025. Initial denial does not mean definitive loss.</span> <a href="https://www.anahp.com.br/wp-content/uploads/2025/04/Balanco_Observatorio_Anahp_Marco25.pdf" target="_blank" rel="noopener">Anahp</a></p></div>
+  <p class="question" style="text-align: center; margin: 56px auto; font-size: 2em; max-width: 56ch;"><span class="pt">E esses indicadores mostram apenas parte do problema.</span><span class="en">And these indicators show only part of the problem.</span></p>
+  <p class="measure" style="text-align: center; margin: 60px auto; max-width: 98ch; font-size: 1.2em;"><span class="pt">Há perdas que não aparecem como glosas: serviços realizados que não chegaram a ser cobrados, pagamentos inferiores aos valores contratados e diferenças que permanecem sem explicação. Esse conjunto de situações inclui as chamadas <strong>perdas invisíveis — silent loss</strong>.</span><span class="en">Some losses never appear as denials: services performed but never billed, payments below contracted amounts, and differences that remain unexplained. These situations include what is often called <strong>silent loss</strong>.</span></p>
+  <div class="callout" style="border-radius: 28px; margin-left: auto; margin-right: auto; padding: 24px; max-width: 98ch; border-width: medium; border-style: none; border-color: currentcolor; border-image: none;"><p class="pt" style="font-size: 1em; text-align: center; margin-left: auto; margin-right: auto; margin-top: 0px; max-width: 96ch;">No Brasil, não identificamos uma estimativa nacional pública e padronizada que quantifique especificamente esse tipo de perda. Nos Estados Unidos, um artigo da Healthcare Financial Management Association (HFMA), publicado em janeiro de 2026, afirma que hospitais continuam perdendo cerca de <strong>3% a 5% da receita líquida anual</strong> por falhas no ciclo de receita, incluindo oportunidades de cobrança perdidas e pagamentos a menor — mesmo após investimentos relevantes em prontuários eletrônicos e sistemas de faturamento.</p><p class="en">In Brazil, we have not identified a public, standardized national estimate specifically quantifying this type of loss. In the United States, a Healthcare Financial Management Association (HFMA) article published in January 2026 states that hospitals continue to lose about <strong>3% to 5% of annual net revenue</strong> through revenue-cycle leakage, including missed billing opportunities and underpayments — despite significant investment in electronic records and billing systems.</p><p class="source" style="font-size: 1em; margin-top: 0px;"><span class="pt">Referência internacional; não é estimativa para o Brasil nem medida exclusiva de silent loss.</span><span class="en">International reference; not an estimate for Brazil and not an exclusive measure of silent loss.</span> <a href="https://www.hfma.org/ai/why-ai-is-such-a-promising-tool-for-eliminating-a-hospitals-revenue-leakage/" target="_blank" rel="noopener">HFMA</a></p></div>
+  <p class="measure" style="margin: 60px auto; text-align: center; max-width: 96ch; font-size: 1.2em;"><span class="pt"><strong>E no Brasil, quanto pode estar passando despercebido?</strong> Não sabemos se a dimensão é maior ou menor que a observada nos Estados Unidos. A ausência de uma medição, porém, não demonstra ausência de perdas.</span><span class="en"><strong>And in Brazil, how much may be going unnoticed?</strong> We do not know whether the scale is larger or smaller than in the United States. But the absence of measurement does not demonstrate the absence of loss.</span></p>
+  <p class="measure" style="margin-bottom: 60px; text-align: center; margin-left: auto; margin-right: auto; max-width: 98ch; font-size: 1.2em;"><span class="pt">O CIPAI chega ao mercado brasileiro para ajudar a responder a essa pergunta também: olhar além dos valores registrados, confrontar informações e separar o que está correto, o que foi explicado e o que merece investigação.</span><span class="en">CIPAI enters the Brazilian market to help answer that question too: looking beyond recorded values, confronting information, and separating what is correct, what has been explained, and what deserves investigation.</span></p>
+  <p class="question" style="text-align: center; margin: 56px auto; font-size: 2em; max-width: 56ch;"><span class="pt">Sua organização não precisa presumir que existe uma perda. Precisa ter condições de verificar.</span><span class="en">Your organization does not need to assume there is a loss. It needs the ability to verify.</span></p>
+</div></section>
+
+<section id="entrega"><div class="wrap">
+  <div class="eyebrow" style="font-size: 2em; text-align: left; margin-bottom: 0px;"><span class="pt">O que uma análise pode revelar</span><span class="en">What an analysis can reveal</span></div>
+  <h2 style="font-size: 2em; text-align: center; margin: 56px auto; max-width: 56ch;"><span class="pt">Uma diferença nem sempre é uma perda. E a ausência de glosas não significa, necessariamente, que toda a receita esteja completa.</span><span class="en">A difference is not always a loss. And the absence of denials does not necessarily mean all revenue is complete.</span></h2>
+  <p class="section-intro" style="font-size: 1.2em; margin: 80px auto; text-align: center; max-width: 96ch;"><span class="pt">O CIPAI ajuda a entender o que as diferenças significam — e o que fazer a respeito — reunindo informações que a instituição já possui e apresentando achados acompanhados das evidências disponíveis.</span><span class="en">CIPAI helps explain what differences mean — and what to do about them — by bringing together information the organization already has and presenting findings with the available evidence.</span></p>
+  <div class="cards">
+    <article class="card"><div class="label pt">Diferença explicada</div><div class="label en">Explained difference</div><h3 class="pt" style="text-align: left; margin: 40px auto 22px; font-size: 1em;">R$ 10.000 faturados. R$ 9.000 recebidos.</h3><h3 class="en">R$10,000 billed. R$9,000 received.</h3><p class="pt" style="text-align: left; margin-left: auto; margin-right: auto; margin-bottom: 4px;">A análise confirma que a diferença de R$ 1.000 corresponde a um ajuste contratual aplicável.</p><p class="en">The analysis confirms that the R$1,000 difference corresponds to an applicable contractual adjustment.</p><p class="result pt"><strong>Resultado:</strong> a investigação pode ser encerrada com segurança, sem gastar novas horas procurando uma perda que não ocorreu.</p><p class="result en"><strong>Result:</strong> the investigation can be safely closed without spending more hours looking for a loss that did not occur.</p></article>
+    <article class="card"><div class="label pt">Pagamento que merece atenção</div><div class="label en">Payment that deserves attention</div><h3 class="pt" style="margin-top: 40px;">R$ 4.000 recebidos. R$ 4.500 possivelmente devidos.</h3><h3 class="en">R$4,000 received. R$4,500 potentially due.</h3><p class="pt">As informações disponíveis indicam uma diferença potencial, mas ainda há algo a confirmar antes de qualquer medida.</p><p class="en">Available information indicates a potential difference, but something still needs confirmation before any action.</p><p class="result pt"><strong>Resultado:</strong> o CIPAI mostra a diferença, o que a sustenta e o que falta esclarecer.</p><p class="result en"><strong>Result:</strong> CIPAI shows the difference, what supports it, and what still needs clarification.</p></article>
+    <article class="card"><div class="label pt">Possível omissão de cobrança</div><div class="label en">Possible missed billing</div><h3 class="pt" style="margin-top: 40px;">O atendimento existe. A cobrança correspondente não aparece.</h3><h3 class="en">The care event exists. The corresponding charge does not appear.</h3><p class="pt">O registro assistencial indica a realização de um procedimento, mas não há cobrança correspondente nas informações analisadas.</p><p class="en">The care record indicates a procedure was performed, but no corresponding charge appears in the analyzed information.</p><p class="result pt"><strong>Resultado:</strong> a possível omissão é sinalizada para verificação antes de atribuir qualquer valor à oportunidade.</p><p class="result en"><strong>Result:</strong> the possible omission is flagged for verification before assigning any value to the opportunity.</p></article>
   </div>
-</nav>
+  <p class="note" style="font-size: 0.7em;"><span class="pt">Exemplos ilustrativos, com dados inteiramente fictícios. Não representam resultados obtidos em uma instituição específica.</span><span class="en">Illustrative examples using entirely fictional data. They do not represent results from a specific organization.</span></p>
+</div></section>
 
-<main>
+<section id="aprendizado"><div class="wrap learning">
+  <div><div class="eyebrow" style="font-size: 1.9em; text-align: left;"><span class="pt">Da descoberta à prevenção</span><span class="en">From discovery to prevention</span></div><h2 style="text-align: center; margin: 56px auto; font-size: 2em; max-width: 56ch;"><span class="pt">Encontrar uma diferença é importante. Evitar que ela se repita é ainda melhor.</span><span class="en">Finding a difference matters. Preventing it from recurring matters even more.</span></h2><p><span class="pt"><strong>A inteligência do CIPAI não termina na entrega de uma análise.</strong> A cada novo ciclo, informações confirmadas, correções e decisões podem enriquecer o conhecimento da instituição.</span><span class="en"><strong>CIPAI intelligence does not end when an analysis is delivered.</strong> With each new cycle, confirmed information, corrections and decisions can enrich institutional knowledge.</span></p><p class="muted"><span class="pt">Uma condição contratual esclarecida, uma causa de glosa identificada ou uma falha corrigida não precisam ser redescobertas do zero. O objetivo é transformar análises pontuais em inteligência institucional que permanece, evolui e ajuda a prevenir novos problemas.</span><span class="en">A clarified contract term, identified denial cause or corrected failure should not have to be rediscovered from scratch. The goal is to turn isolated analyses into institutional intelligence that persists, evolves and helps prevent new problems.</span></p></div>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div><strong class="pt">Esclarecer</strong><strong class="en">Clarify</strong><p class="pt" style="margin-top: 0px;">Separar o que está correto, o que foi explicado e o que ainda exige investigação.</p><p class="en">Separate what is correct, what has been explained, and what still requires investigation.</p></div></div>
+    <div class="step"><div class="n">2</div><div><strong class="pt">Preservar conhecimento</strong><strong class="en">Preserve knowledge</strong><p class="pt">Registrar contexto, evidências e decisões para que o aprendizado não fique disperso em pessoas, planilhas e documentos.</p><p class="en">Record context, evidence and decisions so learning is not scattered across people, spreadsheets and documents.</p></div></div>
+    <div class="step"><div class="n">3</div><div><strong class="pt">Reconhecer recorrências</strong><strong class="en">Recognize recurrence</strong><p class="pt">Identificar situações semelhantes e reduzir investigações repetitivas.</p><p class="en">Identify similar situations and reduce repetitive investigations.</p></div></div>
+    <div class="step"><div class="n">4</div><div><strong class="pt">Liberar capacidade da equipe</strong><strong class="en">Free team capacity</strong><p class="pt">Direcionar tempo humano para os casos complexos, melhoria de processos, contratos e decisões que realmente exigem experiência.</p><p class="en">Direct human time toward complex cases, process improvement, contracts and decisions that truly require expertise.</p></div></div>
+  </div>
+</div></section>
 
-  <section class="hero">
-    <div class="wrap">
-      <div class="cols">
-        <div>
-          <p class="lede" data-i18n="lede">Em um retorno real de operadora, o CIPAI leu <em>18.420 itens</em>. A glosa formal somava R$ 30.939,11 — e <em>83,3%</em> desse valor estava em apenas três códigos.</p>
-          <p class="lead" data-i18n="hp">O ponto não é listar glosas. É transformar milhares de linhas em poucas frentes de decisão: corrigir, investigar, reapresentar, recorrer, monitorar — ou declarar que falta informação para concluir.</p>
-          <p style="margin-top:var(--s-lg)"><a class="cta" href="#ajuda" data-i18n="hcta">Falar com o founder</a></p>
-          <p class="micro" data-i18n="hmic">Protótipo operacional inicial · validação controlada · sem cliente pagante</p>
-        </div>
-        <aside class="proof">
-          <div class="lbl" data-i18n="plbl">Retorno real · arquivo canônico integral</div>
-          <div class="n"><b data-i18n="pn1">18.420</b><small data-i18n="ps1">itens lidos</small></div>
-          <div class="n"><b data-i18n="pn2">R$ 30.939,11</b><small data-i18n="ps2">em glosa formal</small></div>
-          <div class="n"><b data-i18n="pn3">83,3%</b><small data-i18n="ps3">do valor em três códigos</small></div>
-          <p class="q" data-i18n="pq">O achado não é o volume. É a concentração — ela muda a decisão operacional.</p>
-        </aside>
-      </div>
-    </div>
-  </section>
+<section id="comecar"><div class="wrap">
+  <div class="eyebrow" style="font-size: 2em; text-align: left;"><span class="pt">Um novo ponto de partida</span><span class="en">A different starting point</span></div>
+  <h2 style="text-align: center; margin: 56px auto; font-size: 2em; max-width: 56ch;"><span class="pt">Sua organização não precisa de uma grande implantação para descobrir onde o CIPAI pode gerar valor.</span><span class="en">Your organization does not need a large implementation project to discover where CIPAI can create value.</span></h2>
+  <p class="section-intro" style="max-width: 94ch; font-size: 1.2em; margin-bottom: 60px; margin-top: 60px;"><span class="pt">Adotar tecnologia no setor de saúde costuma significar meses de implementação, viagens, treinamentos, integrações e mobilização de equipes antes que o primeiro resultado apareça. O CIPAI foi concebido para permitir um começo mais simples.</span><span class="en">Adopting technology in healthcare often means months of implementation, travel, training, integrations and team mobilization before the first result appears. CIPAI is designed to allow a simpler start.</span></p>
+  <div class="adoption">
+    <div class="panel"><h3 class="pt" style="margin-top: 10px;">Você continua usando o que já funciona.</h3><h3 class="en">You keep using what already works.</h3><ul class="pt"><li>Sem substituir o ERP para começar.</li><li>Sem exigir uma equipe exclusiva para a análise inicial.</li><li>Sem começar por viagens ou treinamentos extensos.</li><li>Sem uma integração complexa como condição para a primeira entrega.</li></ul><ul class="en"><li>No ERP replacement required to start.</li><li>No dedicated team required for the initial analysis.</li><li>No need to begin with travel or extensive training.</li><li>No complex integration required as a condition for the first deliverable.</li></ul></div>
+    <div class="panel highlight"><h3 class="pt" style="margin-top: 10px;">Primeiro, demonstramos o que seus dados podem revelar.</h3><h3 class="en">First, we demonstrate what your data can reveal.</h3><p class="pt">Definimos uma pergunta ou período relevante, trabalhamos com informações elegíveis que a instituição já possui e entregamos uma análise com achados, limites e próximos pontos a esclarecer.</p><p class="en">We define a relevant question or period, work with eligible information the organization already has, and deliver an analysis with findings, limits and next points to clarify.</p><p class="pt"><strong>A continuidade é uma decisão da sua organização, baseada no valor observado.</strong></p><p class="en"><strong>Continuing is your organization's decision, based on the value observed.</strong></p></div>
+  </div>
+  <p class="question" style="text-align: center; margin: 56px auto; font-size: 2em; max-width: 56ch;"><span class="pt">Você não precisa transformar toda a operação para descobrir onde pode melhorar.</span><span class="en">You do not need to transform the entire operation to discover where it can improve.</span></p>
+</div></section>
 
-  <section id="produto">
-    <div class="wrap">
-      <h2 class="q" data-i18n="q1">O que é o CIPAI?</h2>
-      <div class="ans">
-        <p data-i18n="a1a">Uma camada governada entre a evidência que a instituição já produz, os modelos de IA que a processam, a confirmação humana que a valida e a memória que a preserva.</p>
-        <p data-i18n="a1b">O primeiro produto é o <strong>CIPAI Healthcare</strong>, e a primeira frente é o ciclo financeiro-administrativo. Não substitui ERP, faturamento, financeiro ou prontuário — opera acima deles e organiza o que já produzem em caminhos de decisão rastreáveis.</p>
-      </div>
-      <div class="cards c4" style="margin-top:var(--s-lg)">
-        <div class="box"><h3 data-i18n="o1">O que foi medido</h3><p data-i18n="o1p">Veio de arquivo, documento ou registro fornecido. A origem fica declarada e reencontrável.</p></div>
-        <div class="box"><h3 data-i18n="o2">O que foi inferido</h3><p data-i18n="o2p">Concluído a partir da evidência, com a base explícita e revisável.</p></div>
-        <div class="box amber"><h3 data-i18n="o3">O que ficou incerto</h3><p data-i18n="o3p">Falta informação para concluir. Permanece visível; não some do resultado.</p></div>
-        <div class="box navy"><h3 data-i18n="o4">O que exige decisão</h3><p data-i18n="o4p">Chega pronto para uma pessoa confirmar ou recusar. Nunca é executado sozinho.</p></div>
-      </div>
-      <p style="margin-top:var(--s-lg);font-size:.92rem;color:var(--c-mute)" data-i18n="a1c">A leitura parte do que a instituição já tem: retornos, exportações, planilhas, notas, tabelas de preço, escalas, folha e as condições contratuais que regem tudo isso. É no cruzamento entre eles que aparece o que nenhum mostra sozinho.</p>
-    </div>
-  </section>
+<section id="publicos"><div class="wrap">
+  <div class="eyebrow" style="font-size: 2em; text-align: left;"><span class="pt">APLICAÇÕES E INFRAESTRUTURA CIPAI</span><span class="en">CIPAI APPLICATIONS AND INFRASTRUCTURE</span></div>
+  <h2 style="font-size: 2em; text-align: center; margin: 56px auto 80px; max-width: 56ch;"><span class="pt">Healthcare é a primeira aplicação comercial do CIPAI — não o limite da sua infraestrutura.</span><span class="en">Healthcare is CIPAI's first commercial application — not the limit of its infrastructure.</span></h2>
+  <div class="audiences">
+    <article class="card"><div class="label pt">Clínicas, hospitais e outros prestadores</div><div class="label en">Clinics, hospitals and other providers</div><h3 class="pt" style="margin-top: 20px;">Entenda melhor sua receita, do atendimento ao recebimento.</h3><h3 class="en">Understand your revenue, from care delivery to payment.</h3><p class="pt">Conferir informações, esclarecer diferenças, identificar situações que merecem investigação e organizar prioridades — sem substituir o sistema de gestão para começar.</p><p class="en">Check information, explain differences, identify situations that deserve investigation and organize priorities — without replacing the management system to start.</p><a class="mini-link" href="contact.html?type=provider" style="font-size: 0.95em; text-align: center; margin-left: auto; margin-right: auto;"><span class="pt">Quero conversar sobre minha instituição →</span><span class="en">Talk about my organization →</span></a></article>
+    <article class="card"><div class="label pt">Parceiros · faturamento, auditoria, consultoria e tecnologia</div><div class="label en">Partners · billing, auditing, consulting and technology</div><h3 class="pt" style="margin-top: 20px;">Inteligência complementar para serviços e sistemas já utilizados.</h3><h3 class="en">Complementary intelligence for services and systems already in use.</h3><p class="pt">Empresas de faturamento, auditoria e consultoria podem explorar o CIPAI como apoio às operações existentes. Fornecedores de ERPs e outros softwares podem avaliar parcerias para acrescentar inteligência decisória e governança aos produtos que seus clientes já utilizam.</p><p class="en">Billing, audit and consulting firms can explore CIPAI as support for existing operations. ERP and other software vendors can discuss partnerships to add decision intelligence and governance to products their clients already use.</p><p class="pt">A forma de colaboração e eventuais integrações são definidas caso a caso, conforme a viabilidade e as autorizações aplicáveis.</p><p class="en">The collaboration model and any integrations are defined case by case, subject to feasibility and applicable authorizations.</p><a class="mini-link" href="contact.html?type=partner" style="text-align: center; margin-left: auto; margin-right: auto;"><span class="pt">Conversar sobre parceria →</span><span class="en">Talk about partnership →</span></a></article>
+    <article class="card"><div class="label pt">Operadoras e outras organizações da saúde</div><div class="label en">Payers and other healthcare organizations</div><h3 class="pt" style="margin-top: 20px;">A mesma abordagem de inteligência pode apoiar outros contextos.</h3><h3 class="en">The same intelligence approach can support other contexts.</h3><p class="pt">Contratos, cobranças, pagamentos e divergências envolvem diferentes participantes. O CIPAI pode ser aplicado a outros desafios de análise e governança, preservando o contexto, as autorizações e os dados de cada organização.</p><p class="en">Contracts, billing, payments and disputes involve different participants. CIPAI can be applied to other analysis and governance challenges while preserving each organization's context, authorization and data.</p><a class="mini-link" href="contact.html?type=other" style="text-align: center; margin-left: auto; margin-right: auto;"><span class="pt">Conversar sobre outra aplicação →</span><span class="en">Talk about another application →</span></a></article>
+  </div>
+  <div class="callout" style="border-radius: 28px;"><p class="pt" style="font-size: 1.2em; margin-top: 4px;"><strong>Uma infraestrutura de inteligência para diferentes desafios.</strong> O CIPAI foi concebido para trabalhar com diferentes fontes de informação, modelos de IA e contextos organizacionais. Essa arquitetura permite ampliar sua atuação para diferentes áreas e setores, levando a mesma inteligência, governança e capacidade de aprendizado a novos desafios organizacionais.</p><p class="en"><strong>An intelligence infrastructure for different challenges.</strong> CIPAI is designed to work across different information sources, AI models and organizational contexts. This architecture allows CIPAI to expand into different areas and sectors, bringing the same intelligence, governance and learning capacity to new organizational challenges.</p></div>
+</div></section>
 
-  <section id="evidencia">
-    <div class="wrap">
-      <h2 class="q" data-i18n="q2">O que foi encontrado em dados reais?</h2>
-      <div class="ans"><p data-i18n="a2">Duas instituições cederam dados reais, sob acordo. O CIPAI não procura apenas glosa — procura o padrão que muda a decisão.</p></div>
-      <div class="cards c2" style="margin-top:var(--s-lg)">
-        <div class="box">
-          <h3 data-i18n="v1">Concentração operacional</h3>
-          <p data-i18n="v1p">Dos R$ 30.939,11 em glosa formal, 83,3% estavam em três códigos. Isso troca a revisão de centenas de linhas por poucas frentes priorizáveis — código, causa provável, contrato, lançamento, parametrização.</p>
-        </div>
-        <div class="box amber">
-          <h3 data-i18n="v2">Valor reconhecido acima do enviado</h3>
-          <p data-i18n="v2p">Em parte do retorno, a operadora processou acima do valor informado — saldo líquido de R$ 26.696,75. Não é glosa e não é receita garantida. É hipótese de investigação: tabela desatualizada, pacote, regra contratual ou subfaturamento evitável.</p>
-        </div>
-        <div class="box green">
-          <h3 data-i18n="v3">Reconciliação que fecha</h3>
-          <p data-i18n="v3p">Em outra instituição, produção, faturamento e nota fiscal reconciliaram sem divergência material. A diferença entre faturado e recebido era retenção tributária legítima. <strong>Resultado nulo também é resultado</strong> — e um sistema confiável precisa saber dizer quando não encontrou erro.</p>
-        </div>
-        <div class="box">
-          <h3 data-i18n="v4">Pendências preservadas</h3>
-          <p data-i18n="v4p">Mesmo sem divergência material, a análise preservou o que exigia decisão: 121 registros produzidos e não faturados, com exposição aproximada de R$ 3,2 mil por mês a confirmar; possíveis custos fixos sem receita atrelada; descasamento de caixa; e produção excluída manualmente sem regra visível. Nada disso foi tratado como perda comprovada.</p>
-        </div>
-      </div>
-      <div class="risk" style="margin-top:var(--s-lg);max-width:none">
-        <h3 data-i18n="v5">Risco contratual de prazo — o achado que nenhum sistema de glosa produz</h3>
-        <p data-i18n="v5p">Em uma frente de teleradiologia, <strong>38% do faturamento analisado — R$ 125.708 — estava associado a entregas acima de 72 horas</strong>. O contratante hoje não glosa por prazo; a glosa observada decorre de nomenclatura. Ainda assim o dado importa: se a régua mudar, o que hoje é latente vira discussão administrativa, glosa futura, questionamento contratual ou risco de continuidade.</p>
-        <p style="margin-top:.6rem" data-i18n="v5q"><strong>Isso não é leitura de glosa. É leitura de contrato contra operação</strong> — e não aparece quando o sistema olha apenas para o que a contraparte sinalizou.</p>
-      </div>
-    </div>
-  </section>
+<section id="confianca"><div class="wrap">
+  <div class="eyebrow" style="font-size: 2em; text-align: left;"><span class="pt">Confiança e governança</span><span class="en">Trust and governance</span></div>
+  <h2 style="text-align: center; margin: 56px auto; font-size: 2em; max-width: 56ch;"><span class="pt">Inteligência que você pode questionar. Decisões que continuam sendo suas.</span><span class="en">Intelligence you can question. Decisions that remain yours.</span></h2>
+  <p class="section-intro" style="font-size: 1.2em; max-width: 96ch; margin-top: 56px; margin-bottom: 80px;"><span class="pt">Uma resposta de inteligência artificial não deve ser aceita apenas porque parece convincente. O CIPAI foi concebido para colocar evidências, contexto e responsabilidade humana no centro da análise.</span><span class="en">An AI response should not be accepted simply because it sounds convincing. CIPAI is designed to place evidence, context and human responsibility at the center of analysis.</span></p>
+  <div class="trust">
+    <div class="item"><strong class="pt">Evidência antes de conclusão</strong><strong class="en">Evidence before conclusion</strong><p class="pt" style="margin-top: 20px;">Distinguir o que foi observado, o que foi inferido e o que ainda precisa ser esclarecido.</p><p class="en">Distinguish what was observed, what was inferred, and what still needs clarification.</p></div>
+    <div class="item"><strong class="pt">Contexto preservado</strong><strong class="en">Context preserved</strong><p class="pt" style="margin-top: 22px;">O conhecimento relevante pode permanecer disponível para novas análises, sem apagar sua história.</p><p class="en">Relevant knowledge can remain available for future analyses without erasing its history.</p></div>
+    <div class="item"><strong class="pt">Múltiplos modelos, governança única</strong><strong class="en">Multiple models, one governance layer</strong><p class="pt" style="margin-top: 20px;">A infraestrutura é concebida para trabalhar com diferentes modelos de IA sem fazer da organização refém de um único fornecedor.</p><p class="en">The infrastructure is designed to work with different AI models without making the organization dependent on a single provider.</p></div>
+    <div class="item"><strong class="pt">Autoridade humana</strong><strong class="en">Human authority</strong><p class="pt" style="margin-top: 20px;">O CIPAI apoia a análise e apresenta possibilidades. Decisões e autorizações relevantes permanecem com as pessoas responsáveis.</p><p class="en">CIPAI supports analysis and presents possibilities. Material decisions and authorizations remain with responsible people.</p></div>
+  </div>
+</div></section>
 
-  <section id="diferenca">
-    <div class="wrap">
-      <h2 class="q" data-i18n="q3">Por que é diferente?</h2>
-      <div class="ans">
-        <p style="font-size:1.15rem;color:var(--c-navy);font-family:var(--f-head);line-height:1.35" data-i18n="a3a">Um sistema comum organiza fluxos. O CIPAI preserva decisões.</p>
-        <p data-i18n="a3b">A diferença não é usar IA melhor. É existir uma camada governada entre a evidência, o modelo, a confirmação humana e a memória institucional.</p>
-      </div>
-      <div class="cards c2" style="margin-top:var(--s-lg)">
-        <div class="box navy">
-          <h3 data-i18n="d1">Governança por design</h3>
-          <p data-i18n="d1p">Proposta não é decisão. Correção não apaga. Reabrir não reescreve. Origem não é verdade. Sem base, o sistema pode se recusar a encerrar.<br><br>Não basta afirmar governança — o sistema precisa <strong>falhar</strong> quando ela é violada. Cada uma dessas regras tem teste que quebra se for desrespeitada.</p>
-        </div>
-        <div class="box navy">
-          <h3 data-i18n="d2">IA substituível</h3>
-          <p data-i18n="d2p">Modelos podem evoluir, ser trocados ou combinados — de origens, perfis e qualidades distintas, escolhidos por adequação à tarefa.<br><br>O que permanece é a governança: o que entrou, o que foi proposto, o que ficou incerto, o que exigiu confirmação e o que virou memória. <strong>Modelos mudam. A governança permanece.</strong></p>
-        </div>
-        <div class="box amber">
-          <h3 data-i18n="d3">Um núcleo, várias frentes</h3>
-          <p data-i18n="d3p">Receber evidência. Separar fato de inferência. Declarar incerteza. Encaminhar confirmação. Preservar histórico. Aprender com validação. Reabrir sem apagar.<br><br>Enquanto cada concorrente resolve uma fração, o CIPAI agrupa frações em torno do mesmo núcleo. Uma frente nova não vira produto separado — entra na mesma lógica.</p>
-        </div>
-        <div class="box amber">
-          <h3 data-i18n="d4">Memória operacional</h3>
-          <p data-i18n="d4p">O sistema não começa do zero a cada arquivo. Confirmações, correções, resultados nulos e exceções conhecidas formam memória governada da organização.<br><br>Quem já usou por mais tempo tem análise melhor — e essa vantagem não é transferível para outro fornecedor.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="agora">
-    <div class="wrap">
-      <h2 class="q" data-i18n="q4">Por que agora?</h2>
-      <div class="ans">
-        <p data-i18n="a4a">Há três anos, construir isto exigiria equipe grande, capital pesado e integração precoce. <strong>Quem tinha a dor não conseguia construir; quem conseguia construir não tinha a dor.</strong></p>
-        <p data-i18n="a4b">A disseminação de modelos mudou isso: conhecimento operacional profundo pode virar produto — desde que a IA não seja tratada como autoridade final. O CIPAI nasce dessa combinação: dor real de domínio, capacidade técnica disponível, e arquitetura que preserva autoridade humana desde o primeiro dia.</p>
-        <p data-i18n="a4c">A regulação caminha na mesma direção — mais rastreabilidade, mais responsabilidade do fornecedor, menos autonomia cega em decisão de saúde. Enquanto o mercado corre para agentes que resolvem sozinhos, o CIPAI foi construído para manter evidência, incerteza e autoridade humana visíveis.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="alcance">
-    <div class="wrap">
-      <h2 class="q" data-i18n="q5">Até onde vai?</h2>
-      <div class="ans">
-        <p data-i18n="a5a">O CIPAI não substitui os setores existentes. <strong>Ele acompanha o caminho da decisão entre eles.</strong></p>
-        <p data-i18n="a5b">Um item pode nascer na base operacional e passar por faturamento, auditoria, financeiro, jurídico, gestão e direção — sem perder evidência, histórico ou responsabilidade. O diferencial não é criar uma tela para cada setor; é preservar o caminho da decisão da base ao topo.</p>
-        <p data-i18n="a5c">O primeiro campo é saúde financeiro-administrativa. Mas a lógica não é de faturamento — é de decisão governada. Onde houver documento, exceção, responsável, regra, evidência ausente, confirmação humana e continuidade, a mesma estrutura se aplica.</p>
-        <p data-i18n="a5d" style="font-size:.92rem;color:var(--c-mute)">O raciocínio especializado entra por configuração de domínio, não por reescrita do núcleo. É o que permite atravessar setores que compartilham a mesma necessidade de caminho organizado — e é consequência de como a arquitetura foi desenhada, não roadmap comercial.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="estado">
-    <div class="wrap">
-      <h2 class="q" data-i18n="q6">Onde o projeto está hoje?</h2>
-      <div class="ans"><p data-i18n="a6">O CIPAI está em validação controlada. O que existe não é operação comercial: é propriedade intelectual depositada, arquitetura congelada, núcleo em validação, interface em desenvolvimento e análises reais conduzidas.</p></div>
-      <div class="cards c3" style="margin:var(--s-lg) 0">
-        <div class="box green"><h3 data-i18n="s1">Feito</h3><p data-i18n="s1p">Pedido provisório depositado e cedido à companhia · arquitetura congelada e verificada antes da implementação · duas análises reais concluídas · constituição em Delaware</p></div>
-        <div class="box amber"><h3 data-i18n="s2">Em andamento</h3><p data-i18n="s2p">Segundo pedido provisório aguardando depósito · procurador registrado em contratação · núcleo de execução em validação · desenvolvimento de interface</p></div>
-        <div class="box"><h3 data-i18n="s3">Próximo</h3><p data-i18n="s3p">Novo caso real · validação com usuários operacionais · parceiro ou programa de aceleração · cofundador de engenharia</p></div>
-      </div>
-      <table class="ev">
-        <tr><td data-i18n="e1">12 mai 2026</td><td data-i18n="e1m">Pedido provisório de patente depositado nos Estados Unidos</td><td data-i18n="e1v">USPTO</td></tr>
-        <tr><td data-i18n="e2">mai 2026</td><td data-i18n="e2m">CIPAI, Inc. constituída em Delaware</td><td data-i18n="e2v">registro público</td></tr>
-        <tr><td data-i18n="e3">21 jun 2026</td><td data-i18n="e3m">Cessão do pedido à companhia averbada</td><td data-i18n="e3v">USPTO</td></tr>
-        <tr><td data-i18n="e4">jun–jul 2026</td><td data-i18n="e4m">Duas instituições analisadas contra arquivo canônico</td><td data-i18n="e4v">—</td></tr>
-        <tr><td data-i18n="e5">jul 2026</td><td data-i18n="e5m">Arquitetura congelada e verificada antes da implementação</td><td data-i18n="e5v">integridade criptográfica</td></tr>
-      </table>
-      <p style="font-size:.88rem;color:var(--c-mute);margin-top:var(--s-md)" data-i18n="enote">Do primeiro registro público ao pedido depositado: <strong>88 dias</strong>. As duas datas são conferíveis por terceiros. Não há cliente pagante, receita ou produto em operação por terceiro.</p>
-    </div>
-  </section>
-
-  <section id="riscos">
-    <div class="wrap">
-      <h2 class="q" data-i18n="q7">O que pode dar errado?</h2>
-      <div class="ans"><p data-i18n="a7">Se você avalia centenas de candidaturas, já sabe que esta seção costuma não existir. Ela existe porque o produto inteiro é sobre não esconder o que não se sabe — e seria incoerente esconder aqui.</p></div>
-      <div style="margin-top:var(--s-lg);max-width:72ch">
-        <div class="risk"><h3 data-i18n="k1">Fundador único, sem cofundador de engenharia.</h3><p data-i18n="k1p">A execução técnica é contratada e auditada contra especificação congelada, com aceite por entrega. Funciona hoje; não escala indefinidamente. O critério de seleção está definido, a pessoa não.</p></div>
-        <div class="risk"><h3 data-i18n="k2">Duas instituições não são amostra.</h3><p data-i18n="k2p">Dois conjuntos reais provam que o método roda e sabe declarar ausência de erro material. Não provam generalização. É o que precisa ser validado a seguir.</p></div>
-        <div class="risk"><h3 data-i18n="k3">O segundo pedido de patente ainda não foi depositado.</h3><p data-i18n="k3p">Está redigido e verificado. Depende de contratar procurador registrado — exigência aplicável a requerente domiciliado fora dos Estados Unidos desde julho de 2026. Há prazo, e ele é conhecido.</p></div>
-        <div class="risk"><h3 data-i18n="k4">Não há produto rodando na mão de ninguém.</h3><p data-i18n="k4p">Existe arquitetura congelada, núcleo em validação e interface em desenvolvimento. As análises foram conduzidas, não autoatendidas. Transformar isso em software que o cliente opera sozinho é o trabalho que falta.</p></div>
-        <div class="risk"><h3 data-i18n="k5">Depende de instituição disposta a ceder dados.</h3><p data-i18n="k5p">O modelo de entrada reduz o atrito ao mínimo — arquivo já exportado, sem integração, sem alteração de sistema. Ainda assim, é a variável que não controlamos.</p></div>
-        <div class="risk"><h3 data-i18n="k6">Concorrentes têm capital e clientes; nós não.</h3><p data-i18n="k6p">A aposta é que a direção regulatória favorece quem construiu com autoridade humana desde a origem. Se essa leitura estiver errada, a vantagem some — e a resposta honesta é que essa é a aposta.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="quem">
-    <div class="wrap">
-      <h2 class="q" data-i18n="q8">Quem está construindo?</h2>
-      <p class="quote" data-i18n="a8q">"Excelência técnica, trabalho e inteligência não garantem bom resultado quando a informação está incompleta, distorcida ou desconectada da realidade em que a decisão precisa funcionar. O CIPAI existe porque esse problema é estrutural."</p>
-      <div class="sig">
-        <b>Paulo Roberto Ribeiro Filho</b><br>
-        <span data-i18n="a8r">Founder e CEO · Cirurgião ortopedista, em prática ativa</span>
-      </div>
-      <div class="ans" style="margin-top:var(--s-md)">
-        <p data-i18n="a8b">Formado no Brasil, com treinamento clínico e cirúrgico avançado em Houston e em Lyon. Antes do CIPAI, liderança executiva e empresas próprias. O problema não veio de um mapa de mercado — veio de anos decidindo com informação incompleta e vendo o contexto se perder entre uma decisão e a seguinte.</p>
-        <p data-i18n="a8c" style="font-size:.92rem;color:var(--c-mute)">A arquitetura foi especificada, congelada e verificada pelo próprio founder, em paralelo à prática cirúrgica. Quem conhece o problema por dentro sabe o que precisa ser preservado.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="ajuda">
-    <div class="wrap">
-      <h2 class="q" data-i18n="q9">Onde você pode ajudar?</h2>
-      <div class="ans"><p data-i18n="a9">Esta é a pergunta que mais importa, e a resposta não começa por dinheiro.</p></div>
-      <div class="cards c3" style="margin-top:var(--s-lg)">
-        <div class="ask">
-          <h3 data-i18n="h1">Acesso a caso real</h3>
-          <p data-i18n="h1p">Uma instituição disposta a ceder um arquivo que já exporta, sob acordo. É a única coisa que não conseguimos produzir sozinhos, e é o que destrava tudo.</p>
-          <p class="give" data-i18n="h1g">Em troca: análise governada, sem custo de licença, sem integração, sem alteração em sistema algum.</p>
-        </div>
-        <div class="ask">
-          <h3 data-i18n="h2">Quem pergunte onde vai quebrar</h3>
-          <p data-i18n="h2p">Especialistas que já avaliaram tecnologia em saúde e sabem onde esta falha antes de nós. Desenho de validação, métricas, usabilidade.</p>
-          <p class="give" data-i18n="h2g">Em troca: método auditável, com a origem de cada número declarada — e resultado nulo quando não há achado.</p>
-        </div>
-        <div class="ask">
-          <h3 data-i18n="h3">Rota de adoção</h3>
-          <p data-i18n="h3p">Como uma tecnologia assim é efetivamente incorporada por uma instituição de saúde. É o caminho que não conhecemos por dentro.</p>
-          <p class="give" data-i18n="h3g">Em troca: PI depositada e cedida, arquitetura congelada, dados reais já analisados.</p>
-        </div>
-      </div>
-      <div class="cards c2" style="margin-top:var(--s-xl)">
-        <div class="box navy"><h3 data-i18n="h4">Evidência antes de contratação.</h3><p data-i18n="h4p">No modelo tradicional, descobrir se algo funciona custa projeto, prazo e orçamento antes de qualquer evidência. Aqui a evidência vem primeiro. A decisão de contratar vem depois — ou não vem.</p></div>
-        <div class="box"><h3 data-i18n="h5">E se você recusar</h3><p data-i18n="h5p">O projeto continua. Está protegido, especificado e o próximo caso vem. O que não se compra sozinho é o olhar de quem já viu centenas de tecnologias em saúde quebrarem.</p></div>
-      </div>
-      <p style="margin-top:var(--s-xl)"><a class="cta" href="mailto:founder@cipai.ai?subject=CIPAI" data-i18n="hc">Falar com o founder</a></p>
-    </div>
-  </section>
-
+<section class="final"><div class="wrap finalbox">
+  <div class="eyebrow" style="font-size: 2em; text-align: left;"><span class="pt">Próximo passo</span><span class="en">Next step</span></div>
+  <h2 style="text-align: center; margin: 56px auto; font-size: 2em; max-width: 56ch;"><span class="pt">Vamos descobrir o que o CIPAI pode fazer pela sua organização?</span><span class="en">Let's discover what CIPAI can do for your organization.</span></h2>
+  <p class="lede" style="max-width: 98ch; font-size: 1.2em; margin-top: 56px; margin-bottom: 56px;"><span class="pt">Talvez você queira compreender melhor a receita de uma clínica, hospital ou outra operação de saúde. Talvez sua equipe já utilize sistemas avançados e precise investigar algo que os relatórios atuais não conseguem explicar. Ou talvez você represente uma consultoria, empresa de faturamento, auditoria, fornecedor de ERP ou software, operadora ou outra organização interessada nas possibilidades do CIPAI.</span><span class="en">You may want to better understand the revenue of a clinic, hospital or another healthcare operation. Your team may already use advanced systems and need to investigate something current reports cannot explain. Or you may represent a consulting or audit firm, billing company, ERP or software provider, payer or another organization interested in CIPAI's possibilities.</span></p>
+  <p style="margin-bottom: 80px; font-size: 1.2em; text-align: left; margin-left: auto; margin-right: auto;"><span class="pt"><strong>Não é necessário conhecer nossa tecnologia, escolher uma solução ou preparar um projeto antes de entrar em contato.</strong> Mesmo que você ainda não tenha uma pergunta definida, podemos começar pela dúvida: o que valeria a pena verificar? Conte-nos brevemente sobre sua organização e o que gostaria de compreender ou melhorar.</span><span class="en"><strong>You do not need to understand our technology, select a solution or prepare a project before contacting us.</strong> Even if you do not have a specific question yet, we can start with a doubt: what would be worth checking? Tell us briefly about your organization and what you would like to understand or improve.</span></p>
+  <div class="actions"><a class="btn primary" href="contact.html"><span class="pt">Conversar com o CIPAI</span><span class="en">Talk to CIPAI</span></a><a class="btn secondary" href="contact.html?type=partner"><span class="pt">Parcerias e outras possibilidades</span><span class="en">Partnerships and other possibilities</span></a></div>
+</div></section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <p class="stage" data-i18n="fs">Protótipo operacional inicial — fase de validação controlada</p>
-    <p data-i18n="fi">Pedido provisório de patente depositado nos Estados Unidos · cedido à CIPAI, Inc.</p>
-    <p>CIPAI, Inc. · Delaware C-Corp ·
-       <a href="/contact.html" data-i18n="fc">Contato</a> ·
-       <a href="/privacy.html" data-i18n="fp">Política de privacidade</a></p>
-  </div>
-</footer>
-
+<footer class="footer"><div class="wrap footer-row"><div class="footer-identity"><strong>CIPAI</strong><div class="footer-signature"><span class="pt">Inteligência que esclarece, aprende e apoia decisões.</span><span class="en">Intelligence that clarifies, learns and supports decisions.</span></div></div><nav class="footer-links" aria-label="Links institucionais"><a href="contact.html"><span class="pt">Contato</span><span class="en">Contact</span></a><a href="mailto:contato@cipai.ai?subject=Contato%20%E2%80%94%20CIPAI"><span class="pt">Escrever ao CIPAI</span><span class="en">Email CIPAI</span></a><a href="privacy.html"><span class="pt">Privacidade</span><span class="en">Privacy</span></a></nav><div class="footer-legal"><span class="pt">CIPAI, Inc. · Delaware, Estados Unidos · © 2026. Todos os direitos reservados.</span><span class="en">CIPAI, Inc. · Delaware, United States · © 2026. All rights reserved.</span></div></div></footer>
 <script>
-const I18N = { en: {
-    "tag":"Governed decision-making in healthcare",
-    "nv1":"Product","nv2":"Evidence","nv3":"Difference","nv4":"Scope","nv5":"Risks","nv6":"Help",
-    "ncta":"Talk to the founder",
-    "lede":"In one real payer-return file, CIPAI read <em>18,420 items</em>. Formal denials totaled R$ 30,939.11 \u2014 and <em>83.3%</em> of that value sat in just three codes.",
-    "hp":"The point is not to list denials. It is to turn thousands of lines into a few decision fronts: correct, investigate, resubmit, appeal, monitor \u2014 or declare that information is missing to conclude.",
-    "hcta":"Talk to the founder","hmic":"Early operational prototype \u00b7 controlled validation \u00b7 no paying customer",
-    "plbl":"Real return \u00b7 complete canonical file",
-    "pn1":"18,420","ps1":"items read","pn2":"R$ 30,939.11","ps2":"in formal denials",
-    "pn3":"83.3%","ps3":"of that value in three codes",
-    "pq":"The finding is not the volume. It is the concentration \u2014 it changes the operational decision.",
-    "q1":"What is CIPAI?",
-    "a1a":"A governed layer between the evidence an institution already produces, the AI models that process it, the human confirmation that validates it, and the memory that preserves it.",
-    "a1b":"The first product is <strong>CIPAI Healthcare</strong>, and the first field is the financial-administrative cycle. It does not replace ERP, billing, finance or clinical records \u2014 it operates above them and organizes what they already produce into traceable decision paths.",
-    "a1c":"The reading starts from what the institution already has: returns, exports, spreadsheets, invoices, price tables, schedules, payroll and the contractual terms governing all of it. It is in the crossing between them that what none of them shows alone appears.",
-    "o1":"What was measured","o1p":"It came from a file, document or record provided. The origin stays declared and findable.",
-    "o2":"What was inferred","o2p":"Concluded from the evidence, with the basis explicit and reviewable.",
-    "o3":"What stayed uncertain","o3p":"Information is missing to conclude. It stays visible; it does not vanish from the result.",
-    "o4":"What requires a decision","o4p":"It arrives ready for a person to confirm or refuse. It is never executed on its own.",
-    "q2":"What was found in real data?",
-    "a2":"Two institutions shared real data, under agreement. CIPAI does not look only for denials \u2014 it looks for the pattern that changes the decision.",
-    "v1":"Operational concentration","v1p":"Of the R$ 30,939.11 in formal denials, 83.3% sat in three codes. That trades reviewing hundreds of lines for a few prioritizable fronts \u2014 code, likely cause, contract, entry, parameterization.",
-    "v2":"Value recognized above what was sent","v2p":"In part of the return, the payer processed above the informed value \u2014 a net balance of R$ 26,696.75. It is not a denial and not guaranteed revenue. It is an investigation hypothesis: outdated table, bundle, contractual rule or avoidable under-billing.",
-    "v3":"A reconciliation that closes","v3p":"At another institution, production, billing and invoicing reconciled with no material discrepancy. The gap between billed and received was legitimate tax withholding. <strong>A null result is also a result</strong> \u2014 and a trustworthy system must be able to say when it found no error.",
-    "v4":"Preserved open items","v4p":"Even with no material discrepancy, the analysis preserved what required a decision: 121 records produced and not billed, with exposure of roughly R$ 3.2 thousand per month to confirm; possible fixed costs with no revenue attached; a cash-flow mismatch; and production manually excluded from billing with no visible rule. None of it was treated as proven loss.",
-    "v5":"Contractual turnaround risk \u2014 the finding no denial system produces",
-    "v5p":"In a teleradiology engagement, <strong>38% of the billing analyzed \u2014 R$ 125,708 \u2014 was associated with deliveries beyond 72 hours</strong>. The contracting party does not currently deny on turnaround; observed denials arise from nomenclature. Even so the data matters: if the rule changes, what is latent today becomes an administrative dispute, a future denial, a contractual challenge or a continuity risk.",
-    "v5q":"<strong>This is not denial reading. It is reading the contract against the operation</strong> \u2014 and it does not appear when the system looks only at what the counterparty flagged.",
-    "q3":"Why is it different?",
-    "a3a":"A typical system organizes workflows. CIPAI preserves decisions.",
-    "a3b":"The difference is not using AI better. It is having a governed layer between the evidence, the model, the human confirmation and the institutional memory.",
-    "d1":"Governance by design","d1p":"A proposal is not a decision. Correction does not erase. Reopening does not rewrite. Origin is not truth. Without a basis, the system can refuse to close.<br><br>Claiming governance is not enough \u2014 the system has to <strong>fail</strong> when it is violated. Each of these rules has a test that breaks if it is disregarded.",
-    "d2":"Replaceable AI","d2p":"Models can evolve, be swapped or combined \u2014 from different origins, profiles and qualities, chosen by fit to the task.<br><br>What remains is the governance: what came in, what was proposed, what stayed uncertain, what required confirmation and what became memory. <strong>Models change. Governance remains.</strong>",
-    "d3":"One core, many fronts","d3p":"Receive evidence. Separate fact from inference. Declare uncertainty. Route confirmation. Preserve history. Learn from validation. Reopen without erasing.<br><br>While each competitor solves one fraction, CIPAI groups fractions around the same core. A new front does not become a separate product \u2014 it enters the same logic.",
-    "d4":"Operational memory","d4p":"The system does not start from zero with each file. Confirmations, corrections, null results and known exceptions form the organization\u2019s governed memory.<br><br>Whoever has used it longer gets better analysis \u2014 and that advantage does not transfer to another vendor.",
-    "q4":"Why now?",
-    "a4a":"Three years ago, building this would have required a large team, heavy capital and early integration. <strong>Those who had the pain could not build; those who could build did not have the pain.</strong>",
-    "a4b":"The spread of models changed that: deep operational knowledge can become a product \u2014 as long as AI is not treated as the final authority. CIPAI comes from that combination: real domain pain, available technical capability, and an architecture that preserves human authority from day one.",
-    "a4c":"Regulation moves the same way \u2014 more traceability, more vendor accountability, less blind autonomy in healthcare decisions. While the market runs toward agents that resolve on their own, CIPAI was built to keep evidence, uncertainty and human authority visible.",
-    "q5":"How far does it go?",
-    "a5a":"CIPAI does not replace existing departments. <strong>It follows the decision path between them.</strong>",
-    "a5b":"An item can start in operations and pass through billing, audit, finance, legal, management and the board \u2014 without losing evidence, history or accountability. The difference is not building a screen per department; it is preserving the decision path from the ground up.",
-    "a5c":"The first field is healthcare financial-administrative work. But the logic is not billing \u2014 it is governed decision-making. Wherever there is a document, an exception, an owner, a rule, missing evidence, human confirmation and continuity, the same structure applies.",
-    "a5d":"Specialized reasoning enters through domain configuration, not by rewriting the core. That is what allows crossing sectors that share the same need for an organized path \u2014 and it is a consequence of how the architecture was designed, not a commercial roadmap.",
-    "q6":"Where is the project today?",
-    "a6":"CIPAI is in controlled validation. What exists is not commercial operation: it is filed intellectual property, frozen architecture, a core in validation, an interface under development and real analyses conducted.",
-    "s1":"Done","s1p":"Provisional application filed and assigned to the company \u00b7 architecture frozen and verified before implementation \u00b7 two real analyses completed \u00b7 Delaware incorporation",
-    "s2":"In progress","s2p":"Second provisional awaiting filing \u00b7 registered practitioner being engaged \u00b7 execution core in validation \u00b7 interface development",
-    "s3":"Next","s3p":"A new real case \u00b7 validation with operational users \u00b7 a partner or acceleration program \u00b7 an engineering co-founder",
-    "e1":"12 May 2026","e1m":"US provisional patent application filed","e1v":"USPTO",
-    "e2":"May 2026","e2m":"CIPAI, Inc. incorporated in Delaware","e2v":"public record",
-    "e3":"21 Jun 2026","e3m":"Assignment to the company recorded","e3v":"USPTO",
-    "e4":"Jun\u2013Jul 2026","e4m":"Two institutions analyzed against canonical files","e4v":"\u2014",
-    "e5":"Jul 2026","e5m":"Architecture frozen and verified before implementation","e5v":"cryptographic integrity",
-    "enote":"From first public record to filed application: <strong>88 days</strong>. Both dates are third-party verifiable. There is no paying customer, revenue or third-party production deployment.",
-    "q7":"What could go wrong?",
-    "a7":"If you review hundreds of applications, you already know this section usually does not exist. It exists because the whole product is about not hiding what is not known \u2014 and it would be incoherent to hide it here.",
-    "k1":"Single founder, no engineering co-founder.","k1p":"Technical execution is contracted and audited against frozen specification, accepted per delivery. It works today; it does not scale indefinitely. The criteria are defined, the person is not.",
-    "k2":"Two institutions are not a sample.","k2p":"Two real datasets prove the method runs and can declare the absence of material error. They do not prove generalization. That is what needs validating next.",
-    "k3":"The second patent application has not been filed.","k3p":"It is drafted and verified. It depends on engaging a registered practitioner \u2014 a requirement applicable to applicants domiciled outside the United States since July 2026. There is a deadline, and it is known.",
-    "k4":"No product is running in anyone\u2019s hands.","k4p":"There is frozen architecture, a core in validation and an interface under development. The analyses were conducted, not self-served. Turning that into software the client operates alone is the work that remains.",
-    "k5":"It depends on an institution willing to share data.","k5p":"The entry model reduces friction to a minimum \u2014 an already exported file, no integration, no system change. Even so, it is the variable we do not control.",
-    "k6":"Competitors have capital and customers; we do not.","k6p":"The bet is that the regulatory direction favors whoever built with human authority from the start. If that reading is wrong, the advantage disappears \u2014 and the honest answer is that this is the bet.",
-    "q8":"Who is building this?",
-    "a8q":"\u201CTechnical excellence, hard work and intelligence do not guarantee good outcomes when the information is incomplete, distorted, or disconnected from the reality in which the decision has to work. CIPAI exists because that problem is structural.\u201D",
-    "a8r":"Founder & CEO \u00b7 Orthopedic surgeon, in active practice",
-    "a8b":"Trained in Brazil, with advanced clinical and surgical training in Houston and Lyon. Before CIPAI, executive leadership and companies of his own. The problem did not come from a market map \u2014 it came from years of deciding with incomplete information and watching context disappear between one decision and the next.",
-    "a8c":"The architecture was specified, frozen and verified by the founder, alongside surgical practice. Whoever knows the problem from the inside knows what has to be preserved.",
-    "q9":"Where can you help?",
-    "a9":"This is the question that matters most, and the answer does not start with money.",
-    "h1":"Access to a real case","h1p":"An institution willing to share a file it already exports, under agreement. It is the one thing we cannot produce alone, and it unlocks everything.",
-    "h1g":"In return: governed analysis, no license cost, no integration, no change to any system.",
-    "h2":"Someone who asks where it breaks","h2p":"Specialists who have assessed healthcare technology and know where this fails before we do. Validation design, metrics, usability.",
-    "h2g":"In return: an auditable method, with the origin of every number declared \u2014 and a null result when there is no finding.",
-    "h3":"A route to adoption","h3p":"How a technology like this is actually incorporated by a healthcare institution. That is the path we do not know from the inside.",
-    "h3g":"In return: IP filed and assigned, frozen architecture, real data already analyzed.",
-    "h4":"Evidence before procurement.","h4p":"In the traditional model, finding out whether something works costs a project, a timeline and a budget before any evidence. Here the evidence comes first. The decision to contract comes afterwards \u2014 or does not come.",
-    "h5":"And if you decline","h5p":"The project continues. It is protected, specified, and the next case is coming. What cannot be bought alone is the eye of someone who has watched hundreds of healthcare technologies break.",
-    "hc":"Talk to the founder",
-    "fs":"Early operational prototype \u2014 controlled validation phase",
-    "fi":"US provisional patent application filed \u00b7 assigned to CIPAI, Inc.",
-    "fc":"Contact","fp":"Privacy Policy"
-} };
-const PT = {};
-document.querySelectorAll('[data-i18n]').forEach(el => { PT[el.dataset.i18n] = el.innerHTML; });
-function setLang(lang) {
-  const dict = lang === 'en' ? I18N.en : PT;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const v = dict[el.dataset.i18n];
-    if (v !== undefined) el.innerHTML = v;
-  });
-  document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
-  document.querySelectorAll('.lang button').forEach(b =>
-    b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
-  try { localStorage.setItem('cipai.lang', lang); } catch (e) {}
-}
-document.querySelectorAll('.lang button').forEach(b =>
-  b.addEventListener('click', () => setLang(b.dataset.lang)));
-try {
-  const s = localStorage.getItem('cipai.lang');
-  if (s === 'en') setLang('en');
-  else if (!s && (navigator.language || '').slice(0,2) !== 'pt') setLang('en');
-} catch (e) {}
+(function(){var h=document.documentElement,b=document.getElementById('lang');function set(l){h.lang=l==='en'?'en':'pt-BR';b.textContent=l==='en'?'PT':'EN';b.setAttribute('aria-label',l==='en'?'Switch to Portuguese':'Switch to English');document.title=l==='en'?'CIPAI Healthcare — Revenue Integrity':'CIPAI Healthcare — Integridade da Receita';try{localStorage.setItem('cipai_lang',l)}catch(e){}}var l='pt';try{if(localStorage.getItem('cipai_lang')==='en')l='en'}catch(e){}set(l);b.addEventListener('click',()=>set(h.lang==='en'?'pt':'en'));})();
 </script>
-</body>
-</html>
+<!-- CIPAI INLINE EDITOR ENGINE — injected before <!-- CIPAI BOX EDITOR — clique numa caixa para ajustar a moldura -->
+
+
+
+
+
+
+ of each page --&gt;
+
+
+
+
+
+
+</body></html>
