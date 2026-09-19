@@ -275,26 +275,132 @@ main section .card p + p { margin-top: 21px !important; }
   .footer .wrap { max-width: 1120px; }
 }
 
+
+/* Contato: moldura nativa do site para formulário próprio. */
+.contact-form-shell{max-width:850px;margin:32px auto 0;padding:clamp(20px,4vw,34px);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+.contact-form-shell h2{margin:0 0 14px;max-width:none;font-size:clamp(1.5rem,3vw,2rem);text-align:left}
+.contact-form-shell .form-lead{color:var(--ink2);text-align:left!important;text-indent:0!important;max-width:69ch;margin:0 0 22px!important}
+.contact-form-shell .form-disclaimer{color:var(--ink2);font-size:.9rem;text-align:left!important;text-indent:0!important;margin:18px 0 0!important}
+.contact-form-shell .form-disclaimer a{text-decoration:underline}
+.contact-form-shell .form-frame{width:100%;min-height:770px;border:0;display:block;background:var(--surface);border-radius:var(--radius-sm)}
+.contact-form-shell .form-pending{border:1px dashed var(--line);border-radius:var(--radius-sm);padding:28px;background:var(--canvas)}
+.contact-form-shell .form-pending p{text-indent:0!important;text-align:left!important;margin:8px 0 0!important}
+@media(max-width:560px){.contact-form-shell{padding:18px}.contact-form-shell .form-frame{min-height:930px}}
+
+/* Formulário nativo CIPAI — Web3Forms (o serviço não controla o visual). */
+.cipai-native-form{margin-top:28px}
+.cipai-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 18px}
+.cipai-field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.cipai-field.cipai-wide{grid-column:1/-1}
+.cipai-field label{font-size:.95rem;font-weight:600;color:var(--ink)}
+.cipai-field input,.cipai-field textarea{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;line-height:1.45;transition:border-color .15s ease}
+.cipai-field textarea{min-height:148px;resize:vertical}
+.cipai-field input:focus,.cipai-field textarea:focus{border-color:var(--amber-solid);outline:2px solid var(--amber-solid);outline-offset:2px}
+.cipai-field input[aria-invalid="true"],.cipai-field textarea[aria-invalid="true"]{border-color:var(--err)}
+.cipai-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+.cipai-submit-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px}
+.cipai-submit-row button{cursor:pointer;font:inherit}
+.cipai-submit-row button:disabled{opacity:.6;cursor:wait}
+.cipai-form-status{margin:0!important;text-indent:0!important;text-align:left!important;font-size:.92rem}
+.cipai-form-status[data-state="success"]{color:var(--ok)}
+.cipai-form-status[data-state="error"]{color:var(--err)}
+/* Confirmação claramente visível após aceitação pelo serviço de envio. */
+[hidden]{display:none!important}
+.cipai-confirmation{margin-top:28px;padding:clamp(24px,4vw,34px);background:var(--ok-bg);border:1px solid var(--ok);border-left:5px solid var(--ok);border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+.cipai-confirmation h3{max-width:none;margin:0 0 12px;color:var(--ink);font-size:clamp(1.3rem,2.6vw,1.75rem)}
+.cipai-confirmation p{margin:0 0 22px!important;text-align:left!important;text-indent:0!important;color:var(--ink);line-height:1.6}
+.cipai-confirmation .btn{cursor:pointer;font:inherit}
+.cipai-confirmation-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:20px}
+.cipai-confirmation-actions .btn{min-height:48px;text-align:center}
+@media(max-width:560px){.cipai-confirmation-actions{flex-direction:column;align-items:stretch}.cipai-confirmation-actions .btn{width:100%}}
+.cipai-form-status[data-state="error"]{background:var(--err-bg);border-left:3px solid var(--err);padding:10px 13px;border-radius:var(--radius-sm)}
+@media(max-width:560px){.cipai-form-grid{grid-template-columns:1fr}.cipai-field.cipai-wide{grid-column:1}.cipai-submit-row button{width:100%}}
 </style></head>
 <body><header><div class="wrap nav"><a class="brand" href="index.html"><span class="brand-name">CIPAI</span><small><span class="pt"><strong class="brand-sector">Healthcare</strong><br>Integridade da Receita</span><span class="en"><strong class="brand-sector">Healthcare</strong><br>Revenue Integrity</span></small></a><nav class="navlinks"><a href="index.html#problema"><span class="pt">O desafio</span><span class="en">The challenge</span></a><a href="index.html#comecar"><span class="pt">Como começar</span><span class="en">How to start</span></a><a class="contact-link" href="index.html"><span class="pt">Início</span><span class="en">Home</span></a><button class="lang" id="lang" aria-label="Alternar idioma">EN</button></nav></div></header>
 <main>
-<section class="hero"><div class="wrap"><div class="eyebrow" style="text-align: left; font-size: 2em; margin-top: 60px; margin-bottom: 60px;"><span class="pt">Contato</span><span class="en">Contact</span></div><h1 style="margin: 60px auto; font-size: 2em; max-width: 94ch; text-align: center;"><span class="pt">Comece por uma conversa simples.</span><span class="en">Start with a simple conversation.</span></h1><p class="lede" style="text-align: left; margin-left: auto; margin-right: auto; max-width: 96ch; margin-bottom: 60px;"><span class="pt">Você não precisa conhecer nossa tecnologia, definir uma solução ou preparar um projeto para falar com o CIPAI. Mesmo sem uma pergunta pronta, conte-nos brevemente sobre sua organização e a dúvida que motivou seu contato.</span><span class="en">You do not need to understand our technology, define a solution or prepare a project to talk to CIPAI. Even without a fully formed question, briefly tell us about your organization and the doubt that prompted you to reach out.</span></p><div class="actions"><a class="btn primary" id="mailMain" href="mailto:contato@cipai.ai?subject=Contato%20%E2%80%94%20CIPAI" style="margin-bottom: 60px;"><span class="pt">Escrever para o CIPAI</span><span class="en">Email CIPAI</span></a><a class="btn secondary" href="index.html" style="margin-bottom: 60px;"><span class="pt">Voltar ao site</span><span class="en">Back to site</span></a></div><p class="small muted" style="margin-top: 0px; text-align: left; margin-left: auto; margin-right: auto;">contato@cipai.ai</p></div></section>
+<section class="hero"><div class="wrap"><div class="eyebrow" style="text-align: left; font-size: 2em; margin-top: 60px; margin-bottom: 60px;"><span class="pt">Contato</span><span class="en">Contact</span></div><h1 style="margin: 60px auto; font-size: 2em; max-width: 94ch; text-align: center;"><span class="pt">Comece por uma conversa simples.</span><span class="en">Start with a simple conversation.</span></h1><p class="lede" style="text-align: left; margin-left: auto; margin-right: auto; max-width: 96ch; margin-bottom: 60px;"><span class="pt">Você não precisa conhecer nossa tecnologia, definir uma solução ou preparar um projeto para falar com o CIPAI. Mesmo sem uma pergunta pronta, conte-nos brevemente sobre sua organização e a dúvida que motivou seu contato.</span><span class="en">You do not need to understand our technology, define a solution or prepare a project to talk to CIPAI. Even without a fully formed question, briefly tell us about your organization and the doubt that prompted you to reach out.</span></p><div class="actions"><a class="btn primary" id="mailMain" href="#formulario" style="margin-bottom: 60px;"><span class="pt">Enviar mensagem</span><span class="en">Send a message</span></a><a class="btn secondary" href="index.html" style="margin-bottom: 60px;"><span class="pt">Voltar ao site</span><span class="en">Back to site</span></a></div><p class="small muted" style="margin-top: 0px; text-align: left; margin-left: auto; margin-right: auto;">contato@cipai.ai</p></div></section>
+
+<section id="formulario" aria-labelledby="formulario-titulo"><div class="wrap">
+  <div class="eyebrow"><span class="pt">Contato institucional</span><span class="en">Institutional contact</span></div>
+  <div class="contact-form-shell">
+    <h2 id="formulario-titulo"><span class="pt">Envie sua mensagem sem abrir um aplicativo de e-mail.</span><span class="en">Send your message without opening an email app.</span></h2>
+    <p class="form-lead"><span class="pt">Informe seu nome, e-mail e uma breve descrição do que deseja conversar. Os dados de contato serão encaminhados à equipe CIPAI.</span><span class="en">Provide your name, email address and a brief description of what you would like to discuss. Your contact details will be forwarded to the CIPAI team.</span></p>
+    <form id="cipaiContactForm" class="cipai-native-form" action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8" aria-describedby="form-notice" novalidate>
+      <input type="hidden" name="access_key" value="3f0b0991-eaea-4808-9844-6a11d0a065c6">
+      <input type="hidden" name="subject" value="Novo contato pelo site CIPAI">
+      <input type="hidden" name="from_name" value="Site institucional CIPAI">
+      <input type="checkbox" name="botcheck" class="cipai-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="cipai-form-grid">
+        <div class="cipai-field"><label for="contact-name"><span class="pt">Nome *</span><span class="en">Name *</span></label><input id="contact-name" name="name" type="text" maxlength="120" autocomplete="name" required></div>
+        <div class="cipai-field"><label for="contact-email"><span class="pt">E-mail para retorno *</span><span class="en">Reply email *</span></label><input id="contact-email" name="email" type="email" maxlength="254" autocomplete="email" required></div>
+        <div class="cipai-field cipai-wide"><label for="contact-org"><span class="pt">Organização (opcional)</span><span class="en">Organization (optional)</span></label><input id="contact-org" name="organization" type="text" maxlength="160" autocomplete="organization"></div>
+        <div class="cipai-field cipai-wide"><label for="contact-message"><span class="pt">Mensagem *</span><span class="en">Message *</span></label><textarea id="contact-message" name="message" rows="6" minlength="10" maxlength="4000" required></textarea></div>
+      </div>
+      <p id="form-notice" class="form-disclaimer"><span class="pt">Ao enviar, seus dados serão processados pelo Web3Forms para encaminhar sua mensagem ao CIPAI. Não envie informações sensíveis. Consulte a </span><span class="en">By submitting, Web3Forms processes your details to forward your message to CIPAI. Do not send sensitive information. See our </span><a href="privacy.html"><span class="pt">Política de Privacidade</span><span class="en">Privacy Policy</span></a>.</p>
+      <div class="cipai-submit-row"><button id="contact-submit" class="btn primary" type="submit"><span class="pt">Enviar mensagem</span><span class="en">Send message</span></button><p id="contact-form-status" class="cipai-form-status" role="status" aria-live="polite" aria-atomic="true"></p></div>
+    </form>
+    <div id="contact-confirmation" class="cipai-confirmation" role="status" aria-live="polite" aria-atomic="true" hidden>
+      <h3 id="confirmation-title" tabindex="-1"><span class="pt">Mensagem enviada com sucesso!</span><span class="en">Message sent successfully!</span></h3>
+      <p><span class="pt">Obrigado pelo contato. Entraremos em contato em breve pelo e-mail informado.</span><span class="en">Thank you for contacting us. We'll be in touch soon at the email address you provided.</span></p>
+      <div class="cipai-confirmation-actions">
+        <a id="continue-site" class="btn primary" href="index.html"><span class="pt">OK · Voltar ao site</span><span class="en">OK · Back to site</span></a>
+        <button id="send-another-message" class="btn secondary" type="button"><span class="pt">Enviar outra mensagem</span><span class="en">Send another message</span></button>
+      </div>
+    </div>
+    <p class="form-disclaimer"><span class="pt">Não inclua dados de pacientes, informações clínicas, demonstrativos, contratos ou outros materiais sensíveis. Consulte nossa </span><span class="en">Do not include patient information, clinical data, statements, contracts or other sensitive materials. See our </span><a href="privacy.html"><span class="pt">página de privacidade</span><span class="en">privacy page</span></a>.</p>
+  </div>
+</div></section>
 <section><div class="wrap"><div class="eyebrow" style="text-align: left; font-size: 2em; margin-bottom: 60px;"><span class="pt">Uma única porta de entrada</span><span class="en">One point of entry</span></div><h2 style="font-size: 2em; max-width: 96ch; text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 60px;"><span class="pt">Não é necessário saber qual modalidade escolher.</span><span class="en">You do not need to know which path to choose.</span></h2><div class="contact-grid"><div class="contact-card"><h3 class="pt" style="text-align: center; margin: 20px auto; font-size: 1.2em;">Clínicas, hospitais e outros prestadores</h3><h3 class="en">Clinics, hospitals and other providers</h3><p class="pt">Se a sua dúvida está relacionada a faturamento, pagamentos, contratos, glosas, itens não cobrados ou à necessidade de compreender melhor a receita, diga apenas qual pergunta gostaria de responder.</p><p class="en">If your question relates to billing, payments, contracts, denials, missed charges or the need to better understand revenue, simply tell us which question you would like answered.</p></div><div class="contact-card"><h3 class="pt" style="font-size: 1.2em; text-align: center; margin: 20px auto;">Consultorias, auditorias, faturamento, ERPs, softwares e outras organizações</h3><h3 class="en">Consulting, auditing, billing, ERP and software firms, payers and other organizations</h3><p class="pt">Se você atua em auditoria, consultoria, faturamento, desenvolve ERPs ou softwares, representa uma operadora ou busca outra aplicação, conte-nos seu contexto. Podemos conversar sobre o CIPAI como infraestrutura complementar em uma operação já existente, sem presumir integrações disponíveis ou acesso a dados de terceiros.</p><p class="en">If you work in auditing, consulting or billing, develop ERP or software products, represent a payer or seek another application, tell us about your context. We can discuss CIPAI as complementary infrastructure for an existing operation, without assuming ready-made integrations or access to third-party data.</p></div></div><div class="warning" style="border-radius: 28px; margin-left: auto; margin-right: auto;"><span class="pt"><strong>Na primeira mensagem, não envie dados de pacientes, guias, demonstrativos, contratos ou outros documentos sensíveis.</strong> Quando o trabalho exigir dados ou documentos, as condições apropriadas são definidas antes do recebimento.</span><span class="en"><strong>Do not send patient data, claim forms, statements, contracts or other sensitive documents in your first message.</strong> When work requires data or documents, appropriate conditions are defined before receipt.</span></div></div></section>
 <section><div class="wrap"><div class="eyebrow" style="text-align: left; font-size: 2em; margin-top: 0px; margin-bottom: 60px;"><span class="pt">O que acontece depois</span><span class="en">What happens next</span></div><h2 style="font-size: 1.8em; text-align: center; margin-left: auto; margin-right: auto; max-width: 98ch; margin-bottom: 60px;"><span class="pt">Primeiro entendemos a pergunta. Depois definimos o melhor ponto de partida.</span><span class="en">First we understand the question. Then we define the right starting point.</span></h2><div class="steps"><div class="step"><div class="n">1</div><div><strong class="pt">Conversa inicial</strong><strong class="en">Initial conversation</strong><p class="pt" style="font-size: 1em; margin-top: 20px;">Entendemos sua organização, a necessidade e o resultado que você gostaria de obter.</p><p class="en">We understand your organization, the need and the result you would like to obtain.</p></div></div><div class="step"><div class="n">2</div><div><strong class="pt">Escopo objetivo</strong><strong class="en">Focused scope</strong><p class="pt" style="font-size: 1em; margin-top: 20px;">Quando aplicável, definimos uma pergunta ou período que possa demonstrar valor sem exigir uma transformação completa da operação.</p><p class="en">When applicable, we define a question or period that can demonstrate value without requiring a full operational transformation.</p></div></div><div class="step"><div class="n">3</div><div><strong class="pt">Condições antes dos dados</strong><strong class="en">Conditions before data</strong><p class="pt" style="margin-top: 20px;">Escopo, informações necessárias, proteção e demais condições são definidos antes do recebimento de materiais sensíveis.</p><p class="en">Scope, required information, protection and other conditions are defined before sensitive materials are received.</p></div></div><div class="step"><div class="n">4</div><div><strong class="pt">Decisão com base no valor observado</strong><strong class="en">Decision based on observed value</strong><p class="pt" style="margin-top: 20px;">A instituição avalia o resultado e decide se e como deseja ampliar a utilização.</p><p class="en">The organization evaluates the result and decides whether and how to expand use.</p></div></div></div></div></section>
 </main><footer class="footer"><div class="wrap footer-row"><div class="footer-identity"><strong>CIPAI</strong><div class="footer-signature"><span class="pt">Inteligência que esclarece, aprende e apoia decisões.</span><span class="en">Intelligence that clarifies, learns and supports decisions.</span></div></div><nav class="footer-links" aria-label="Links institucionais"><a href="index.html"><span class="pt">Início</span><span class="en">Home</span></a><a href="mailto:contato@cipai.ai?subject=Contato%20%E2%80%94%20CIPAI"><span class="pt">Escrever ao CIPAI</span><span class="en">Email CIPAI</span></a><a href="privacy.html"><span class="pt">Privacidade</span><span class="en">Privacy</span></a></nav><div class="footer-legal"><span class="pt">CIPAI, Inc. · Delaware, Estados Unidos · © 2026. Todos os direitos reservados.</span><span class="en">CIPAI, Inc. · Delaware, United States · © 2026. All rights reserved.</span></div></div></footer>
-<script>(function(){var h=document.documentElement,b=document.getElementById('lang'),m=document.getElementById('mailMain');function set(l){h.lang=l==='en'?'en':'pt-BR';b.textContent=l==='en'?'PT':'EN';document.title=l==='en'?'Contact — CIPAI':'Contato — CIPAI';try{localStorage.setItem('cipai_lang',l)}catch(e){}}var l='pt';try{if(localStorage.getItem('cipai_lang')==='en')l='en'}catch(e){}set(l);b.onclick=()=>set(h.lang==='en'?'pt':'en');var q=new URLSearchParams(location.search).get('type');if(q==='provider')m.href='mailto:contato@cipai.ai?subject=Contato%20%E2%80%94%20CIPAI%20Healthcare';if(q==='partner')m.href='mailto:contato@cipai.ai?subject=Parceria%20%E2%80%94%20CIPAI';if(q==='other')m.href='mailto:contato@cipai.ai?subject=Outra%20aplica%C3%A7%C3%A3o%20%E2%80%94%20CIPAI';})();</script>
-<!-- CIPAI INLINE EDITOR ENGINE — injected before <!-- CIPAI BOX EDITOR — clique numa caixa para ajustar a moldura -->
+<script>(function(){var h=document.documentElement,b=document.getElementById('lang'),m=document.getElementById('mailMain');function set(l){h.lang=l==='en'?'en':'pt-BR';b.textContent=l==='en'?'PT':'EN';document.title=l==='en'?'Contact — CIPAI':'Contato — CIPAI';try{localStorage.setItem('cipai_lang',l)}catch(e){}}var l='pt';try{if(localStorage.getItem('cipai_lang')==='en')l='en'}catch(e){}set(l);b.onclick=()=>set(h.lang==='en'?'pt':'en');var q=new URLSearchParams(location.search).get('type');})();</script>
 
 
-
-
-
-
- of each page --&gt;
-
-
-
-
-
-
+<script>
+/* O serviço informa aceitação; a entrega na caixa de entrada requer teste externo separado. */
+(function(){
+  const form=document.getElementById('cipaiContactForm');
+  const button=document.getElementById('contact-submit');
+  const status=document.getElementById('contact-form-status');
+  const confirmation=document.getElementById('contact-confirmation');
+  const confirmationTitle=document.getElementById('confirmation-title');
+  const sendAgain=document.getElementById('send-another-message');
+  if(!form || !button || !status || !confirmation || !confirmationTitle || !sendAgain)return;
+  sendAgain.addEventListener('click',function(){
+    confirmation.hidden=true;
+    form.hidden=false;
+    status.textContent='';status.dataset.state='';
+    document.getElementById('contact-name').focus();
+  });
+  let sending=false;
+  function language(){return document.documentElement.lang==='en'?'en':'pt';}
+  function message(pt,en,state){status.textContent=language()==='en'?en:pt;status.dataset.state=state||'';}
+  form.addEventListener('submit',async function(event){
+    event.preventDefault();
+    if(sending)return;
+    if(!form.reportValidity())return;
+    if(form.elements.botcheck.checked)return;
+    sending=true;button.disabled=true;
+    message('Enviando mensagem…','Sending message…','');
+    try{
+      const controller=new AbortController();
+      const timeout=setTimeout(()=>controller.abort(),20000);
+      let response;
+      try{
+        response=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'},signal:controller.signal});
+      }finally{clearTimeout(timeout)}
+      const data=await response.json();
+      if(!response.ok || data.success!==true)throw Error('submission rejected');
+      form.reset();
+      status.textContent='';status.dataset.state='';
+      form.hidden=true;
+      confirmation.hidden=false;
+      confirmationTitle.focus();
+    }catch(_error){
+      message('Não foi possível confirmar o envio. Tente novamente ou escreva para contato@cipai.ai.',
+              'We could not confirm submission. Please try again or email contato@cipai.ai.','error');
+    }finally{sending=false;button.disabled=false}
+  });
+})();
+</script>
 </body></html>
